@@ -28,4 +28,5 @@ token_names = [
     'LPAREN',
     'RPAREN',
     'DOT',
+    'COMMA',
 ] + list(reserved_words.values())

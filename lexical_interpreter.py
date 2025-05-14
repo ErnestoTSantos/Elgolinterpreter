@@ -15,6 +15,7 @@ class ElgolLexer:
     t_LPAREN = r'\('
     t_RPAREN = r'\)'
     t_DOT = r'\.'
+    t_COMMA = r','
 
     t_ignore = ' \t'
 
