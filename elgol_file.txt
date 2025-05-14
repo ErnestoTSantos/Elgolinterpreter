@@ -1,0 +1,17 @@
+inteiro _Soma (inteiro Num, inteiro Dois) .
+inicio .
+    elgio = Num + Dois .
+fim .
+
+inteiro Lixo . # minha variável
+inteiro Teste .
+inteiro Vi
+Lixo = 34 .
+comp Lixo .
+se Lixo maior zero .
+entao.
+inicio.
+        Lixo = zero .
+        Teste = 300
+        Resultado = _Soma (Lixo, Teste) .
+fim.
