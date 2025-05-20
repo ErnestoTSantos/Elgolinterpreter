@@ -12,15 +12,16 @@ class ElgolLexer:
     t_MINUS = r'-'
     t_TIMES = r'x'
     t_DIVIDE = r'/'
-    t_LPAREN = r'\('
-    t_RPAREN = r'\)'
+    #t_LPAREN = r'\('
+    #t_RPAREN = r'\)'
     t_DOT = r'\.'
-    t_COMMA = r','
+    #t_COMMA = r','
 
     t_ignore = ' \t'
 
     def __init__(self):
         self.lexer = lex.lex(module=self)
+        self.paren_count = 0
 
     def input(self, data: str):
         self.lexer.input(data)
@@ -36,6 +37,28 @@ class ElgolLexer:
     def t_COMMENT(self, t):
         r'\#.*'
         pass
+    
+    # Parênteses
+    def t_LPAREN(self, t):
+        r'\('
+        self.paren_count += 1
+        return t
+
+    def t_RPAREN(self, t):
+        r'\)'
+        if self.paren_count > 0:
+            self.paren_count -= 1
+        return t
+
+    # Comma (apenas entre parênteses)
+    def t_COMMA(self, t):
+        r','
+        if self.paren_count > 0:
+            return t
+        else:
+            t.type = 'ERROR'
+            t.value = t.value
+            return self.t_error(t)
 
     # Função válida: _ + identificador válido
     def t_FUNCTION_NAME(self, t):

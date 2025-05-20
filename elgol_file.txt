@@ -6,6 +6,7 @@ fim .
 inteiro Lixo . # minha variável
 inteiro Teste .
 inteiro Vi
+inteiro COMA,Comma .
 Lixo = 34 .
 comp Lixo .
 se Lixo maior zero .
