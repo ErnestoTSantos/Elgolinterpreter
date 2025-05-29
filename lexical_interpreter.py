@@ -33,6 +33,7 @@ class ElgolLexer:
     """
 
     tokens = token_names
+    reserved_map = reserved_words
 
     t_EQUALS = r"="
     t_PLUS = r"\+"
@@ -49,6 +50,8 @@ class ElgolLexer:
 
     def input(self, data: str):
         self.lexer.input(data)
+        self.paren_count = 0
+        self.lexer.lineno = 1
 
     def token(self):
         return self.lexer.token()
@@ -57,12 +60,10 @@ class ElgolLexer:
         self.input(data)
         return list(iter(self.token, None))
 
-    # Comentários
     def t_COMMENT(self, t):
         r"\#.*"
         pass
 
-    # Parênteses
     def t_LPAREN(self, t):
         r"\("
         self.paren_count += 1
@@ -74,53 +75,71 @@ class ElgolLexer:
             self.paren_count -= 1
         return t
 
-    # Comma (apenas entre parênteses)
     def t_COMMA(self, t):
         r","
         if self.paren_count > 0:
             return t
         else:
-            t.type = "ERROR"
-            t.value = t.value
-            return self.t_error(t)
-
-    # Função válida: _ + identificador válido
-    def t_FUNCTION_NAME(self, t):
-        r"_[A-Z][a-zA-Z]{2,}"
-        return t
-
-    # Identificadores válidos
-    def t_ID(self, t):
-        r"[A-Za-z]{3,}"
-        if t.value in reserved_words:
-            t.type = reserved_words[t.value]
-        elif (
-            t.value.startswith("_")
-            and len(t.value) > 1
-            and t.value[1:].isalpha()
-            and t.value[1].isupper()
-            and len(t.value[1:]) >= 3
-        ):
-            t.type = "FUNCTION_NAME"
-        elif t.value[0].isupper() and t.value.isalpha() and len(t.value) >= 3:
-            t.type = "IDENTIFIER"
-        else:
-            t.lexer.skip(len(t.value))
+            print(
+                f"Erro Léxico: Vírgula inesperada '{t.value}' fora de parênteses na linha {t.lineno}, coluna {self._find_column(t.lexer.lexdata, t)}."
+            )
             return None
-        return t
 
-    # Inteiros
+    def t_FUNCTION_NAME(self, t):
+        r"_[A-Z][a-zA-Z0-9]*"
+        name_part_candidate = t.value[1:]
+        if len(name_part_candidate) >= 3 and name_part_candidate.isalpha():
+            t.type = "FUNCTION_NAME"
+            return t
+        else:
+            print(
+                f"Erro Léxico: Nome de função Elgol mal formado ou com caracteres inválidos '{t.value}' na linha {t.lineno}, coluna {self._find_column(t.lexer.lexdata, t)}."
+            )
+            return None
+
     def t_INTEGER(self, t):
         r"[1-9][0-9]*"
         t.value = int(t.value)
         return t
 
-    # Quebra de linha
+    def t_ID(self, t):
+        r"[A-Za-zÀ-ÖØ-öø-ÿ][A-Za-z0-9À-ÖØ-öø-ÿ]*"
+
+        if t.value in self.reserved_map:
+            t.type = self.reserved_map[t.value]
+            return t
+
+        is_valid_elgol_identifier = True
+
+        if not t.value[0].isupper():
+            is_valid_elgol_identifier = False
+
+        if len(t.value) < 3:
+            is_valid_elgol_identifier = False
+
+        if not t.value.isascii() or not t.value.isalnum():
+            is_valid_elgol_identifier = False
+
+        if is_valid_elgol_identifier:
+            t.type = "IDENTIFIER"
+            return t
+        else:
+            print(
+                f"Erro Léxico: Palavra reservada ou identificador Elgol inválido '{t.value}' na linha {t.lineno}, coluna {self._find_column(t.lexer.lexdata, t)}."
+            )
+            return None
+
     def t_newline(self, t):
         r"\n+"
         t.lexer.lineno += len(t.value)
 
-    # Erro léxico
     def t_error(self, t):
-        print(f"Caractere inválido: '{t.value[0]}' na linha {t.lineno}")
+        print(
+            f"Erro Léxico: Caractere inválido '{t.value[0]}' na linha {t.lineno}, coluna {self._find_column(t.lexer.lexdata, t)}."
+        )
         t.lexer.skip(1)
+
+    def _find_column(self, text_input, token_or_lexer_instance):
+        lexpos = token_or_lexer_instance.lexpos
+        line_start = text_input.rfind("\n", 0, lexpos) + 1
+        return (lexpos - line_start) + 1

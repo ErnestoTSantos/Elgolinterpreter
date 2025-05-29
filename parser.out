@@ -1,0 +1,1923 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> program
+Rule 1     program -> component_list
+Rule 2     component_list -> component_list component
+Rule 3     component_list -> component
+Rule 4     component_list -> empty
+Rule 5     component -> function_definition
+Rule 6     component -> main_block
+Rule 7     function_definition -> type_specifier FUNCTION_NAME LPAREN parameters_opt RPAREN DOT block
+Rule 8     parameters_opt -> parameter_list
+Rule 9     parameters_opt -> empty
+Rule 10    parameter_list -> parameter_list COMMA parameter
+Rule 11    parameter_list -> parameter
+Rule 12    parameter -> type_specifier IDENTIFIER
+Rule 13    type_specifier -> INTEIRO
+Rule 14    main_block -> block
+Rule 15    block -> INICIO DOT statement_list_opt FIM DOT
+Rule 16    statement_list_opt -> statement_list
+Rule 17    statement_list_opt -> empty
+Rule 18    statement_list -> statement_list statement
+Rule 19    statement_list -> statement
+Rule 20    variable_declaration -> type_specifier IDENTIFIER
+Rule 21    statement -> variable_declaration DOT
+Rule 22    statement -> expression_statement DOT
+Rule 23    statement -> if_statement
+Rule 24    statement -> while_statement
+Rule 25    expression_statement -> expression
+Rule 26    if_statement -> SE expression DOT ENTAO DOT block senao_opt
+Rule 27    senao_opt -> SENAO DOT block
+Rule 28    senao_opt -> empty
+Rule 29    while_statement -> ENQUANTO expression DOT block
+Rule 30    lvalue -> IDENTIFIER
+Rule 31    lvalue -> ELGIO
+Rule 32    expression -> lvalue EQUALS expression
+Rule 33    expression -> expression PLUS expression
+Rule 34    expression -> expression MINUS expression
+Rule 35    expression -> expression TIMES expression
+Rule 36    expression -> expression DIVIDE expression
+Rule 37    expression -> expression MAIOR expression
+Rule 38    expression -> expression MENOR expression
+Rule 39    expression -> expression IGUAL expression
+Rule 40    expression -> expression DIFERENTE expression
+Rule 41    expression -> COMP expression
+Rule 42    expression -> LPAREN expression RPAREN
+Rule 43    expression -> INTEGER
+Rule 44    expression -> ZERO
+Rule 45    expression -> IDENTIFIER
+Rule 46    expression -> ELGIO
+Rule 47    expression -> FUNCTION_NAME LPAREN argument_list_opt RPAREN
+Rule 48    argument_list_opt -> argument_list
+Rule 49    argument_list_opt -> empty
+Rule 50    argument_list -> argument_list COMMA expression
+Rule 51    argument_list -> expression
+Rule 52    empty -> <empty>
+
+Terminals, with rules where they appear
+
+COMMA                : 10 50
+COMP                 : 41
+DIFERENTE            : 40
+DIVIDE               : 36
+DOT                  : 7 15 15 21 22 26 26 27 29
+ELGIO                : 31 46
+ENQUANTO             : 29
+ENTAO                : 26
+EQUALS               : 32
+FIM                  : 15
+FUNCTION_NAME        : 7 47
+IDENTIFIER           : 12 20 30 45
+IGUAL                : 39
+INICIO               : 15
+INTEGER              : 43
+INTEIRO              : 13
+LPAREN               : 7 42 47
+MAIOR                : 37
+MENOR                : 38
+MINUS                : 34
+PLUS                 : 33
+RPAREN               : 7 42 47
+SE                   : 26
+SENAO                : 27
+TIMES                : 35
+ZERO                 : 44
+error                : 
+
+Nonterminals, with rules where they appear
+
+argument_list        : 48 50
+argument_list_opt    : 47
+block                : 7 14 26 27 29
+component            : 2 3
+component_list       : 1 2
+empty                : 4 9 17 28 49
+expression           : 25 26 29 32 33 33 34 34 35 35 36 36 37 37 38 38 39 39 40 40 41 42 50 51
+expression_statement : 22
+function_definition  : 5
+if_statement         : 23
+lvalue               : 32
+main_block           : 6
+parameter            : 10 11
+parameter_list       : 8 10
+parameters_opt       : 7
+program              : 0
+senao_opt            : 26
+statement            : 18 19
+statement_list       : 16 18
+statement_list_opt   : 15
+type_specifier       : 7 12 20
+variable_declaration : 21
+while_statement      : 24
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . program
+    (1) program -> . component_list
+    (2) component_list -> . component_list component
+    (3) component_list -> . component
+    (4) component_list -> . empty
+    (5) component -> . function_definition
+    (6) component -> . main_block
+    (52) empty -> .
+    (7) function_definition -> . type_specifier FUNCTION_NAME LPAREN parameters_opt RPAREN DOT block
+    (14) main_block -> . block
+    (13) type_specifier -> . INTEIRO
+    (15) block -> . INICIO DOT statement_list_opt FIM DOT
+
+  ! shift/reduce conflict for INTEIRO resolved as shift
+  ! shift/reduce conflict for INICIO resolved as shift
+    $end            reduce using rule 52 (empty -> .)
+    INTEIRO         shift and go to state 9
+    INICIO          shift and go to state 10
+
+  ! INTEIRO         [ reduce using rule 52 (empty -> .) ]
+  ! INICIO          [ reduce using rule 52 (empty -> .) ]
+
+    program                        shift and go to state 1
+    component_list                 shift and go to state 2
+    component                      shift and go to state 3
+    empty                          shift and go to state 4
+    function_definition            shift and go to state 5
+    main_block                     shift and go to state 6
+    type_specifier                 shift and go to state 7
+    block                          shift and go to state 8
+
+state 1
+
+    (0) S' -> program .
+
+
+
+state 2
+
+    (1) program -> component_list .
+    (2) component_list -> component_list . component
+    (5) component -> . function_definition
+    (6) component -> . main_block
+    (7) function_definition -> . type_specifier FUNCTION_NAME LPAREN parameters_opt RPAREN DOT block
+    (14) main_block -> . block
+    (13) type_specifier -> . INTEIRO
+    (15) block -> . INICIO DOT statement_list_opt FIM DOT
+
+    $end            reduce using rule 1 (program -> component_list .)
+    INTEIRO         shift and go to state 9
+    INICIO          shift and go to state 10
+
+    component                      shift and go to state 11
+    function_definition            shift and go to state 5
+    main_block                     shift and go to state 6
+    type_specifier                 shift and go to state 7
+    block                          shift and go to state 8
+
+state 3
+
+    (3) component_list -> component .
+
+    INTEIRO         reduce using rule 3 (component_list -> component .)
+    INICIO          reduce using rule 3 (component_list -> component .)
+    $end            reduce using rule 3 (component_list -> component .)
+
+
+state 4
+
+    (4) component_list -> empty .
+
+    INTEIRO         reduce using rule 4 (component_list -> empty .)
+    INICIO          reduce using rule 4 (component_list -> empty .)
+    $end            reduce using rule 4 (component_list -> empty .)
+
+
+state 5
+
+    (5) component -> function_definition .
+
+    INTEIRO         reduce using rule 5 (component -> function_definition .)
+    INICIO          reduce using rule 5 (component -> function_definition .)
+    $end            reduce using rule 5 (component -> function_definition .)
+
+
+state 6
+
+    (6) component -> main_block .
+
+    INTEIRO         reduce using rule 6 (component -> main_block .)
+    INICIO          reduce using rule 6 (component -> main_block .)
+    $end            reduce using rule 6 (component -> main_block .)
+
+
+state 7
+
+    (7) function_definition -> type_specifier . FUNCTION_NAME LPAREN parameters_opt RPAREN DOT block
+
+    FUNCTION_NAME   shift and go to state 12
+
+
+state 8
+
+    (14) main_block -> block .
+
+    INTEIRO         reduce using rule 14 (main_block -> block .)
+    INICIO          reduce using rule 14 (main_block -> block .)
+    $end            reduce using rule 14 (main_block -> block .)
+
+
+state 9
+
+    (13) type_specifier -> INTEIRO .
+
+    FUNCTION_NAME   reduce using rule 13 (type_specifier -> INTEIRO .)
+    IDENTIFIER      reduce using rule 13 (type_specifier -> INTEIRO .)
+
+
+state 10
+
+    (15) block -> INICIO . DOT statement_list_opt FIM DOT
+
+    DOT             shift and go to state 13
+
+
+state 11
+
+    (2) component_list -> component_list component .
+
+    INTEIRO         reduce using rule 2 (component_list -> component_list component .)
+    INICIO          reduce using rule 2 (component_list -> component_list component .)
+    $end            reduce using rule 2 (component_list -> component_list component .)
+
+
+state 12
+
+    (7) function_definition -> type_specifier FUNCTION_NAME . LPAREN parameters_opt RPAREN DOT block
+
+    LPAREN          shift and go to state 14
+
+
+state 13
+
+    (15) block -> INICIO DOT . statement_list_opt FIM DOT
+    (16) statement_list_opt -> . statement_list
+    (17) statement_list_opt -> . empty
+    (18) statement_list -> . statement_list statement
+    (19) statement_list -> . statement
+    (52) empty -> .
+    (21) statement -> . variable_declaration DOT
+    (22) statement -> . expression_statement DOT
+    (23) statement -> . if_statement
+    (24) statement -> . while_statement
+    (20) variable_declaration -> . type_specifier IDENTIFIER
+    (25) expression_statement -> . expression
+    (26) if_statement -> . SE expression DOT ENTAO DOT block senao_opt
+    (29) while_statement -> . ENQUANTO expression DOT block
+    (13) type_specifier -> . INTEIRO
+    (32) expression -> . lvalue EQUALS expression
+    (33) expression -> . expression PLUS expression
+    (34) expression -> . expression MINUS expression
+    (35) expression -> . expression TIMES expression
+    (36) expression -> . expression DIVIDE expression
+    (37) expression -> . expression MAIOR expression
+    (38) expression -> . expression MENOR expression
+    (39) expression -> . expression IGUAL expression
+    (40) expression -> . expression DIFERENTE expression
+    (41) expression -> . COMP expression
+    (42) expression -> . LPAREN expression RPAREN
+    (43) expression -> . INTEGER
+    (44) expression -> . ZERO
+    (45) expression -> . IDENTIFIER
+    (46) expression -> . ELGIO
+    (47) expression -> . FUNCTION_NAME LPAREN argument_list_opt RPAREN
+    (30) lvalue -> . IDENTIFIER
+    (31) lvalue -> . ELGIO
+
+    FIM             reduce using rule 52 (empty -> .)
+    SE              shift and go to state 26
+    ENQUANTO        shift and go to state 27
+    INTEIRO         shift and go to state 9
+    COMP            shift and go to state 29
+    LPAREN          shift and go to state 30
+    INTEGER         shift and go to state 31
+    ZERO            shift and go to state 32
+    IDENTIFIER      shift and go to state 24
+    ELGIO           shift and go to state 33
+    FUNCTION_NAME   shift and go to state 34
+
+    statement_list_opt             shift and go to state 15
+    statement_list                 shift and go to state 16
+    empty                          shift and go to state 17
+    statement                      shift and go to state 18
+    variable_declaration           shift and go to state 19
+    expression_statement           shift and go to state 20
+    if_statement                   shift and go to state 21
+    while_statement                shift and go to state 22
+    type_specifier                 shift and go to state 23
+    expression                     shift and go to state 25
+    lvalue                         shift and go to state 28
+
+state 14
+
+    (7) function_definition -> type_specifier FUNCTION_NAME LPAREN . parameters_opt RPAREN DOT block
+    (8) parameters_opt -> . parameter_list
+    (9) parameters_opt -> . empty
+    (10) parameter_list -> . parameter_list COMMA parameter
+    (11) parameter_list -> . parameter
+    (52) empty -> .
+    (12) parameter -> . type_specifier IDENTIFIER
+    (13) type_specifier -> . INTEIRO
+
+    RPAREN          reduce using rule 52 (empty -> .)
+    INTEIRO         shift and go to state 9
+
+    type_specifier                 shift and go to state 35
+    parameters_opt                 shift and go to state 36
+    parameter_list                 shift and go to state 37
+    empty                          shift and go to state 38
+    parameter                      shift and go to state 39
+
+state 15
+
+    (15) block -> INICIO DOT statement_list_opt . FIM DOT
+
+    FIM             shift and go to state 40
+
+
+state 16
+
+    (16) statement_list_opt -> statement_list .
+    (18) statement_list -> statement_list . statement
+    (21) statement -> . variable_declaration DOT
+    (22) statement -> . expression_statement DOT
+    (23) statement -> . if_statement
+    (24) statement -> . while_statement
+    (20) variable_declaration -> . type_specifier IDENTIFIER
+    (25) expression_statement -> . expression
+    (26) if_statement -> . SE expression DOT ENTAO DOT block senao_opt
+    (29) while_statement -> . ENQUANTO expression DOT block
+    (13) type_specifier -> . INTEIRO
+    (32) expression -> . lvalue EQUALS expression
+    (33) expression -> . expression PLUS expression
+    (34) expression -> . expression MINUS expression
+    (35) expression -> . expression TIMES expression
+    (36) expression -> . expression DIVIDE expression
+    (37) expression -> . expression MAIOR expression
+    (38) expression -> . expression MENOR expression
+    (39) expression -> . expression IGUAL expression
+    (40) expression -> . expression DIFERENTE expression
+    (41) expression -> . COMP expression
+    (42) expression -> . LPAREN expression RPAREN
+    (43) expression -> . INTEGER
+    (44) expression -> . ZERO
+    (45) expression -> . IDENTIFIER
+    (46) expression -> . ELGIO
+    (47) expression -> . FUNCTION_NAME LPAREN argument_list_opt RPAREN
+    (30) lvalue -> . IDENTIFIER
+    (31) lvalue -> . ELGIO
+
+    FIM             reduce using rule 16 (statement_list_opt -> statement_list .)
+    SE              shift and go to state 26
+    ENQUANTO        shift and go to state 27
+    INTEIRO         shift and go to state 9
+    COMP            shift and go to state 29
+    LPAREN          shift and go to state 30
+    INTEGER         shift and go to state 31
+    ZERO            shift and go to state 32
+    IDENTIFIER      shift and go to state 24
+    ELGIO           shift and go to state 33
+    FUNCTION_NAME   shift and go to state 34
+
+    statement                      shift and go to state 41
+    variable_declaration           shift and go to state 19
+    expression_statement           shift and go to state 20
+    if_statement                   shift and go to state 21
+    while_statement                shift and go to state 22
+    type_specifier                 shift and go to state 23
+    expression                     shift and go to state 25
+    lvalue                         shift and go to state 28
+
+state 17
+
+    (17) statement_list_opt -> empty .
+
+    FIM             reduce using rule 17 (statement_list_opt -> empty .)
+
+
+state 18
+
+    (19) statement_list -> statement .
+
+    SE              reduce using rule 19 (statement_list -> statement .)
+    ENQUANTO        reduce using rule 19 (statement_list -> statement .)
+    INTEIRO         reduce using rule 19 (statement_list -> statement .)
+    COMP            reduce using rule 19 (statement_list -> statement .)
+    LPAREN          reduce using rule 19 (statement_list -> statement .)
+    INTEGER         reduce using rule 19 (statement_list -> statement .)
+    ZERO            reduce using rule 19 (statement_list -> statement .)
+    IDENTIFIER      reduce using rule 19 (statement_list -> statement .)
+    ELGIO           reduce using rule 19 (statement_list -> statement .)
+    FUNCTION_NAME   reduce using rule 19 (statement_list -> statement .)
+    FIM             reduce using rule 19 (statement_list -> statement .)
+
+
+state 19
+
+    (21) statement -> variable_declaration . DOT
+
+    DOT             shift and go to state 42
+
+
+state 20
+
+    (22) statement -> expression_statement . DOT
+
+    DOT             shift and go to state 43
+
+
+state 21
+
+    (23) statement -> if_statement .
+
+    SE              reduce using rule 23 (statement -> if_statement .)
+    ENQUANTO        reduce using rule 23 (statement -> if_statement .)
+    INTEIRO         reduce using rule 23 (statement -> if_statement .)
+    COMP            reduce using rule 23 (statement -> if_statement .)
+    LPAREN          reduce using rule 23 (statement -> if_statement .)
+    INTEGER         reduce using rule 23 (statement -> if_statement .)
+    ZERO            reduce using rule 23 (statement -> if_statement .)
+    IDENTIFIER      reduce using rule 23 (statement -> if_statement .)
+    ELGIO           reduce using rule 23 (statement -> if_statement .)
+    FUNCTION_NAME   reduce using rule 23 (statement -> if_statement .)
+    FIM             reduce using rule 23 (statement -> if_statement .)
+
+
+state 22
+
+    (24) statement -> while_statement .
+
+    SE              reduce using rule 24 (statement -> while_statement .)
+    ENQUANTO        reduce using rule 24 (statement -> while_statement .)
+    INTEIRO         reduce using rule 24 (statement -> while_statement .)
+    COMP            reduce using rule 24 (statement -> while_statement .)
+    LPAREN          reduce using rule 24 (statement -> while_statement .)
+    INTEGER         reduce using rule 24 (statement -> while_statement .)
+    ZERO            reduce using rule 24 (statement -> while_statement .)
+    IDENTIFIER      reduce using rule 24 (statement -> while_statement .)
+    ELGIO           reduce using rule 24 (statement -> while_statement .)
+    FUNCTION_NAME   reduce using rule 24 (statement -> while_statement .)
+    FIM             reduce using rule 24 (statement -> while_statement .)
+
+
+state 23
+
+    (20) variable_declaration -> type_specifier . IDENTIFIER
+
+    IDENTIFIER      shift and go to state 44
+
+
+state 24
+
+    (45) expression -> IDENTIFIER .
+    (30) lvalue -> IDENTIFIER .
+
+    PLUS            reduce using rule 45 (expression -> IDENTIFIER .)
+    MINUS           reduce using rule 45 (expression -> IDENTIFIER .)
+    TIMES           reduce using rule 45 (expression -> IDENTIFIER .)
+    DIVIDE          reduce using rule 45 (expression -> IDENTIFIER .)
+    MAIOR           reduce using rule 45 (expression -> IDENTIFIER .)
+    MENOR           reduce using rule 45 (expression -> IDENTIFIER .)
+    IGUAL           reduce using rule 45 (expression -> IDENTIFIER .)
+    DIFERENTE       reduce using rule 45 (expression -> IDENTIFIER .)
+    DOT             reduce using rule 45 (expression -> IDENTIFIER .)
+    RPAREN          reduce using rule 45 (expression -> IDENTIFIER .)
+    COMMA           reduce using rule 45 (expression -> IDENTIFIER .)
+    EQUALS          reduce using rule 30 (lvalue -> IDENTIFIER .)
+
+
+state 25
+
+    (25) expression_statement -> expression .
+    (33) expression -> expression . PLUS expression
+    (34) expression -> expression . MINUS expression
+    (35) expression -> expression . TIMES expression
+    (36) expression -> expression . DIVIDE expression
+    (37) expression -> expression . MAIOR expression
+    (38) expression -> expression . MENOR expression
+    (39) expression -> expression . IGUAL expression
+    (40) expression -> expression . DIFERENTE expression
+
+    DOT             reduce using rule 25 (expression_statement -> expression .)
+    PLUS            shift and go to state 45
+    MINUS           shift and go to state 46
+    TIMES           shift and go to state 47
+    DIVIDE          shift and go to state 48
+    MAIOR           shift and go to state 49
+    MENOR           shift and go to state 50
+    IGUAL           shift and go to state 51
+    DIFERENTE       shift and go to state 52
+
+
+state 26
+
+    (26) if_statement -> SE . expression DOT ENTAO DOT block senao_opt
+    (32) expression -> . lvalue EQUALS expression
+    (33) expression -> . expression PLUS expression
+    (34) expression -> . expression MINUS expression
+    (35) expression -> . expression TIMES expression
+    (36) expression -> . expression DIVIDE expression
+    (37) expression -> . expression MAIOR expression
+    (38) expression -> . expression MENOR expression
+    (39) expression -> . expression IGUAL expression
+    (40) expression -> . expression DIFERENTE expression
+    (41) expression -> . COMP expression
+    (42) expression -> . LPAREN expression RPAREN
+    (43) expression -> . INTEGER
+    (44) expression -> . ZERO
+    (45) expression -> . IDENTIFIER
+    (46) expression -> . ELGIO
+    (47) expression -> . FUNCTION_NAME LPAREN argument_list_opt RPAREN
+    (30) lvalue -> . IDENTIFIER
+    (31) lvalue -> . ELGIO
+
+    COMP            shift and go to state 29
+    LPAREN          shift and go to state 30
+    INTEGER         shift and go to state 31
+    ZERO            shift and go to state 32
+    IDENTIFIER      shift and go to state 24
+    ELGIO           shift and go to state 33
+    FUNCTION_NAME   shift and go to state 34
+
+    expression                     shift and go to state 53
+    lvalue                         shift and go to state 28
+
+state 27
+
+    (29) while_statement -> ENQUANTO . expression DOT block
+    (32) expression -> . lvalue EQUALS expression
+    (33) expression -> . expression PLUS expression
+    (34) expression -> . expression MINUS expression
+    (35) expression -> . expression TIMES expression
+    (36) expression -> . expression DIVIDE expression
+    (37) expression -> . expression MAIOR expression
+    (38) expression -> . expression MENOR expression
+    (39) expression -> . expression IGUAL expression
+    (40) expression -> . expression DIFERENTE expression
+    (41) expression -> . COMP expression
+    (42) expression -> . LPAREN expression RPAREN
+    (43) expression -> . INTEGER
+    (44) expression -> . ZERO
+    (45) expression -> . IDENTIFIER
+    (46) expression -> . ELGIO
+    (47) expression -> . FUNCTION_NAME LPAREN argument_list_opt RPAREN
+    (30) lvalue -> . IDENTIFIER
+    (31) lvalue -> . ELGIO
+
+    COMP            shift and go to state 29
+    LPAREN          shift and go to state 30
+    INTEGER         shift and go to state 31
+    ZERO            shift and go to state 32
+    IDENTIFIER      shift and go to state 24
+    ELGIO           shift and go to state 33
+    FUNCTION_NAME   shift and go to state 34
+
+    expression                     shift and go to state 54
+    lvalue                         shift and go to state 28
+
+state 28
+
+    (32) expression -> lvalue . EQUALS expression
+
+    EQUALS          shift and go to state 55
+
+
+state 29
+
+    (41) expression -> COMP . expression
+    (32) expression -> . lvalue EQUALS expression
+    (33) expression -> . expression PLUS expression
+    (34) expression -> . expression MINUS expression
+    (35) expression -> . expression TIMES expression
+    (36) expression -> . expression DIVIDE expression
+    (37) expression -> . expression MAIOR expression
+    (38) expression -> . expression MENOR expression
+    (39) expression -> . expression IGUAL expression
+    (40) expression -> . expression DIFERENTE expression
+    (41) expression -> . COMP expression
+    (42) expression -> . LPAREN expression RPAREN
+    (43) expression -> . INTEGER
+    (44) expression -> . ZERO
+    (45) expression -> . IDENTIFIER
+    (46) expression -> . ELGIO
+    (47) expression -> . FUNCTION_NAME LPAREN argument_list_opt RPAREN
+    (30) lvalue -> . IDENTIFIER
+    (31) lvalue -> . ELGIO
+
+    COMP            shift and go to state 29
+    LPAREN          shift and go to state 30
+    INTEGER         shift and go to state 31
+    ZERO            shift and go to state 32
+    IDENTIFIER      shift and go to state 24
+    ELGIO           shift and go to state 33
+    FUNCTION_NAME   shift and go to state 34
+
+    expression                     shift and go to state 56
+    lvalue                         shift and go to state 28
+
+state 30
+
+    (42) expression -> LPAREN . expression RPAREN
+    (32) expression -> . lvalue EQUALS expression
+    (33) expression -> . expression PLUS expression
+    (34) expression -> . expression MINUS expression
+    (35) expression -> . expression TIMES expression
+    (36) expression -> . expression DIVIDE expression
+    (37) expression -> . expression MAIOR expression
+    (38) expression -> . expression MENOR expression
+    (39) expression -> . expression IGUAL expression
+    (40) expression -> . expression DIFERENTE expression
+    (41) expression -> . COMP expression
+    (42) expression -> . LPAREN expression RPAREN
+    (43) expression -> . INTEGER
+    (44) expression -> . ZERO
+    (45) expression -> . IDENTIFIER
+    (46) expression -> . ELGIO
+    (47) expression -> . FUNCTION_NAME LPAREN argument_list_opt RPAREN
+    (30) lvalue -> . IDENTIFIER
+    (31) lvalue -> . ELGIO
+
+    COMP            shift and go to state 29
+    LPAREN          shift and go to state 30
+    INTEGER         shift and go to state 31
+    ZERO            shift and go to state 32
+    IDENTIFIER      shift and go to state 24
+    ELGIO           shift and go to state 33
+    FUNCTION_NAME   shift and go to state 34
+
+    expression                     shift and go to state 57
+    lvalue                         shift and go to state 28
+
+state 31
+
+    (43) expression -> INTEGER .
+
+    PLUS            reduce using rule 43 (expression -> INTEGER .)
+    MINUS           reduce using rule 43 (expression -> INTEGER .)
+    TIMES           reduce using rule 43 (expression -> INTEGER .)
+    DIVIDE          reduce using rule 43 (expression -> INTEGER .)
+    MAIOR           reduce using rule 43 (expression -> INTEGER .)
+    MENOR           reduce using rule 43 (expression -> INTEGER .)
+    IGUAL           reduce using rule 43 (expression -> INTEGER .)
+    DIFERENTE       reduce using rule 43 (expression -> INTEGER .)
+    DOT             reduce using rule 43 (expression -> INTEGER .)
+    RPAREN          reduce using rule 43 (expression -> INTEGER .)
+    COMMA           reduce using rule 43 (expression -> INTEGER .)
+
+
+state 32
+
+    (44) expression -> ZERO .
+
+    PLUS            reduce using rule 44 (expression -> ZERO .)
+    MINUS           reduce using rule 44 (expression -> ZERO .)
+    TIMES           reduce using rule 44 (expression -> ZERO .)
+    DIVIDE          reduce using rule 44 (expression -> ZERO .)
+    MAIOR           reduce using rule 44 (expression -> ZERO .)
+    MENOR           reduce using rule 44 (expression -> ZERO .)
+    IGUAL           reduce using rule 44 (expression -> ZERO .)
+    DIFERENTE       reduce using rule 44 (expression -> ZERO .)
+    DOT             reduce using rule 44 (expression -> ZERO .)
+    RPAREN          reduce using rule 44 (expression -> ZERO .)
+    COMMA           reduce using rule 44 (expression -> ZERO .)
+
+
+state 33
+
+    (46) expression -> ELGIO .
+    (31) lvalue -> ELGIO .
+
+    PLUS            reduce using rule 46 (expression -> ELGIO .)
+    MINUS           reduce using rule 46 (expression -> ELGIO .)
+    TIMES           reduce using rule 46 (expression -> ELGIO .)
+    DIVIDE          reduce using rule 46 (expression -> ELGIO .)
+    MAIOR           reduce using rule 46 (expression -> ELGIO .)
+    MENOR           reduce using rule 46 (expression -> ELGIO .)
+    IGUAL           reduce using rule 46 (expression -> ELGIO .)
+    DIFERENTE       reduce using rule 46 (expression -> ELGIO .)
+    DOT             reduce using rule 46 (expression -> ELGIO .)
+    RPAREN          reduce using rule 46 (expression -> ELGIO .)
+    COMMA           reduce using rule 46 (expression -> ELGIO .)
+    EQUALS          reduce using rule 31 (lvalue -> ELGIO .)
+
+
+state 34
+
+    (47) expression -> FUNCTION_NAME . LPAREN argument_list_opt RPAREN
+
+    LPAREN          shift and go to state 58
+
+
+state 35
+
+    (12) parameter -> type_specifier . IDENTIFIER
+
+    IDENTIFIER      shift and go to state 59
+
+
+state 36
+
+    (7) function_definition -> type_specifier FUNCTION_NAME LPAREN parameters_opt . RPAREN DOT block
+
+    RPAREN          shift and go to state 60
+
+
+state 37
+
+    (8) parameters_opt -> parameter_list .
+    (10) parameter_list -> parameter_list . COMMA parameter
+
+    RPAREN          reduce using rule 8 (parameters_opt -> parameter_list .)
+    COMMA           shift and go to state 61
+
+
+state 38
+
+    (9) parameters_opt -> empty .
+
+    RPAREN          reduce using rule 9 (parameters_opt -> empty .)
+
+
+state 39
+
+    (11) parameter_list -> parameter .
+
+    COMMA           reduce using rule 11 (parameter_list -> parameter .)
+    RPAREN          reduce using rule 11 (parameter_list -> parameter .)
+
+
+state 40
+
+    (15) block -> INICIO DOT statement_list_opt FIM . DOT
+
+    DOT             shift and go to state 62
+
+
+state 41
+
+    (18) statement_list -> statement_list statement .
+
+    SE              reduce using rule 18 (statement_list -> statement_list statement .)
+    ENQUANTO        reduce using rule 18 (statement_list -> statement_list statement .)
+    INTEIRO         reduce using rule 18 (statement_list -> statement_list statement .)
+    COMP            reduce using rule 18 (statement_list -> statement_list statement .)
+    LPAREN          reduce using rule 18 (statement_list -> statement_list statement .)
+    INTEGER         reduce using rule 18 (statement_list -> statement_list statement .)
+    ZERO            reduce using rule 18 (statement_list -> statement_list statement .)
+    IDENTIFIER      reduce using rule 18 (statement_list -> statement_list statement .)
+    ELGIO           reduce using rule 18 (statement_list -> statement_list statement .)
+    FUNCTION_NAME   reduce using rule 18 (statement_list -> statement_list statement .)
+    FIM             reduce using rule 18 (statement_list -> statement_list statement .)
+
+
+state 42
+
+    (21) statement -> variable_declaration DOT .
+
+    SE              reduce using rule 21 (statement -> variable_declaration DOT .)
+    ENQUANTO        reduce using rule 21 (statement -> variable_declaration DOT .)
+    INTEIRO         reduce using rule 21 (statement -> variable_declaration DOT .)
+    COMP            reduce using rule 21 (statement -> variable_declaration DOT .)
+    LPAREN          reduce using rule 21 (statement -> variable_declaration DOT .)
+    INTEGER         reduce using rule 21 (statement -> variable_declaration DOT .)
+    ZERO            reduce using rule 21 (statement -> variable_declaration DOT .)
+    IDENTIFIER      reduce using rule 21 (statement -> variable_declaration DOT .)
+    ELGIO           reduce using rule 21 (statement -> variable_declaration DOT .)
+    FUNCTION_NAME   reduce using rule 21 (statement -> variable_declaration DOT .)
+    FIM             reduce using rule 21 (statement -> variable_declaration DOT .)
+
+
+state 43
+
+    (22) statement -> expression_statement DOT .
+
+    SE              reduce using rule 22 (statement -> expression_statement DOT .)
+    ENQUANTO        reduce using rule 22 (statement -> expression_statement DOT .)
+    INTEIRO         reduce using rule 22 (statement -> expression_statement DOT .)
+    COMP            reduce using rule 22 (statement -> expression_statement DOT .)
+    LPAREN          reduce using rule 22 (statement -> expression_statement DOT .)
+    INTEGER         reduce using rule 22 (statement -> expression_statement DOT .)
+    ZERO            reduce using rule 22 (statement -> expression_statement DOT .)
+    IDENTIFIER      reduce using rule 22 (statement -> expression_statement DOT .)
+    ELGIO           reduce using rule 22 (statement -> expression_statement DOT .)
+    FUNCTION_NAME   reduce using rule 22 (statement -> expression_statement DOT .)
+    FIM             reduce using rule 22 (statement -> expression_statement DOT .)
+
+
+state 44
+
+    (20) variable_declaration -> type_specifier IDENTIFIER .
+
+    DOT             reduce using rule 20 (variable_declaration -> type_specifier IDENTIFIER .)
+
+
+state 45
+
+    (33) expression -> expression PLUS . expression
+    (32) expression -> . lvalue EQUALS expression
+    (33) expression -> . expression PLUS expression
+    (34) expression -> . expression MINUS expression
+    (35) expression -> . expression TIMES expression
+    (36) expression -> . expression DIVIDE expression
+    (37) expression -> . expression MAIOR expression
+    (38) expression -> . expression MENOR expression
+    (39) expression -> . expression IGUAL expression
+    (40) expression -> . expression DIFERENTE expression
+    (41) expression -> . COMP expression
+    (42) expression -> . LPAREN expression RPAREN
+    (43) expression -> . INTEGER
+    (44) expression -> . ZERO
+    (45) expression -> . IDENTIFIER
+    (46) expression -> . ELGIO
+    (47) expression -> . FUNCTION_NAME LPAREN argument_list_opt RPAREN
+    (30) lvalue -> . IDENTIFIER
+    (31) lvalue -> . ELGIO
+
+    COMP            shift and go to state 29
+    LPAREN          shift and go to state 30
+    INTEGER         shift and go to state 31
+    ZERO            shift and go to state 32
+    IDENTIFIER      shift and go to state 24
+    ELGIO           shift and go to state 33
+    FUNCTION_NAME   shift and go to state 34
+
+    expression                     shift and go to state 63
+    lvalue                         shift and go to state 28
+
+state 46
+
+    (34) expression -> expression MINUS . expression
+    (32) expression -> . lvalue EQUALS expression
+    (33) expression -> . expression PLUS expression
+    (34) expression -> . expression MINUS expression
+    (35) expression -> . expression TIMES expression
+    (36) expression -> . expression DIVIDE expression
+    (37) expression -> . expression MAIOR expression
+    (38) expression -> . expression MENOR expression
+    (39) expression -> . expression IGUAL expression
+    (40) expression -> . expression DIFERENTE expression
+    (41) expression -> . COMP expression
+    (42) expression -> . LPAREN expression RPAREN
+    (43) expression -> . INTEGER
+    (44) expression -> . ZERO
+    (45) expression -> . IDENTIFIER
+    (46) expression -> . ELGIO
+    (47) expression -> . FUNCTION_NAME LPAREN argument_list_opt RPAREN
+    (30) lvalue -> . IDENTIFIER
+    (31) lvalue -> . ELGIO
+
+    COMP            shift and go to state 29
+    LPAREN          shift and go to state 30
+    INTEGER         shift and go to state 31
+    ZERO            shift and go to state 32
+    IDENTIFIER      shift and go to state 24
+    ELGIO           shift and go to state 33
+    FUNCTION_NAME   shift and go to state 34
+
+    expression                     shift and go to state 64
+    lvalue                         shift and go to state 28
+
+state 47
+
+    (35) expression -> expression TIMES . expression
+    (32) expression -> . lvalue EQUALS expression
+    (33) expression -> . expression PLUS expression
+    (34) expression -> . expression MINUS expression
+    (35) expression -> . expression TIMES expression
+    (36) expression -> . expression DIVIDE expression
+    (37) expression -> . expression MAIOR expression
+    (38) expression -> . expression MENOR expression
+    (39) expression -> . expression IGUAL expression
+    (40) expression -> . expression DIFERENTE expression
+    (41) expression -> . COMP expression
+    (42) expression -> . LPAREN expression RPAREN
+    (43) expression -> . INTEGER
+    (44) expression -> . ZERO
+    (45) expression -> . IDENTIFIER
+    (46) expression -> . ELGIO
+    (47) expression -> . FUNCTION_NAME LPAREN argument_list_opt RPAREN
+    (30) lvalue -> . IDENTIFIER
+    (31) lvalue -> . ELGIO
+
+    COMP            shift and go to state 29
+    LPAREN          shift and go to state 30
+    INTEGER         shift and go to state 31
+    ZERO            shift and go to state 32
+    IDENTIFIER      shift and go to state 24
+    ELGIO           shift and go to state 33
+    FUNCTION_NAME   shift and go to state 34
+
+    expression                     shift and go to state 65
+    lvalue                         shift and go to state 28
+
+state 48
+
+    (36) expression -> expression DIVIDE . expression
+    (32) expression -> . lvalue EQUALS expression
+    (33) expression -> . expression PLUS expression
+    (34) expression -> . expression MINUS expression
+    (35) expression -> . expression TIMES expression
+    (36) expression -> . expression DIVIDE expression
+    (37) expression -> . expression MAIOR expression
+    (38) expression -> . expression MENOR expression
+    (39) expression -> . expression IGUAL expression
+    (40) expression -> . expression DIFERENTE expression
+    (41) expression -> . COMP expression
+    (42) expression -> . LPAREN expression RPAREN
+    (43) expression -> . INTEGER
+    (44) expression -> . ZERO
+    (45) expression -> . IDENTIFIER
+    (46) expression -> . ELGIO
+    (47) expression -> . FUNCTION_NAME LPAREN argument_list_opt RPAREN
+    (30) lvalue -> . IDENTIFIER
+    (31) lvalue -> . ELGIO
+
+    COMP            shift and go to state 29
+    LPAREN          shift and go to state 30
+    INTEGER         shift and go to state 31
+    ZERO            shift and go to state 32
+    IDENTIFIER      shift and go to state 24
+    ELGIO           shift and go to state 33
+    FUNCTION_NAME   shift and go to state 34
+
+    expression                     shift and go to state 66
+    lvalue                         shift and go to state 28
+
+state 49
+
+    (37) expression -> expression MAIOR . expression
+    (32) expression -> . lvalue EQUALS expression
+    (33) expression -> . expression PLUS expression
+    (34) expression -> . expression MINUS expression
+    (35) expression -> . expression TIMES expression
+    (36) expression -> . expression DIVIDE expression
+    (37) expression -> . expression MAIOR expression
+    (38) expression -> . expression MENOR expression
+    (39) expression -> . expression IGUAL expression
+    (40) expression -> . expression DIFERENTE expression
+    (41) expression -> . COMP expression
+    (42) expression -> . LPAREN expression RPAREN
+    (43) expression -> . INTEGER
+    (44) expression -> . ZERO
+    (45) expression -> . IDENTIFIER
+    (46) expression -> . ELGIO
+    (47) expression -> . FUNCTION_NAME LPAREN argument_list_opt RPAREN
+    (30) lvalue -> . IDENTIFIER
+    (31) lvalue -> . ELGIO
+
+    COMP            shift and go to state 29
+    LPAREN          shift and go to state 30
+    INTEGER         shift and go to state 31
+    ZERO            shift and go to state 32
+    IDENTIFIER      shift and go to state 24
+    ELGIO           shift and go to state 33
+    FUNCTION_NAME   shift and go to state 34
+
+    expression                     shift and go to state 67
+    lvalue                         shift and go to state 28
+
+state 50
+
+    (38) expression -> expression MENOR . expression
+    (32) expression -> . lvalue EQUALS expression
+    (33) expression -> . expression PLUS expression
+    (34) expression -> . expression MINUS expression
+    (35) expression -> . expression TIMES expression
+    (36) expression -> . expression DIVIDE expression
+    (37) expression -> . expression MAIOR expression
+    (38) expression -> . expression MENOR expression
+    (39) expression -> . expression IGUAL expression
+    (40) expression -> . expression DIFERENTE expression
+    (41) expression -> . COMP expression
+    (42) expression -> . LPAREN expression RPAREN
+    (43) expression -> . INTEGER
+    (44) expression -> . ZERO
+    (45) expression -> . IDENTIFIER
+    (46) expression -> . ELGIO
+    (47) expression -> . FUNCTION_NAME LPAREN argument_list_opt RPAREN
+    (30) lvalue -> . IDENTIFIER
+    (31) lvalue -> . ELGIO
+
+    COMP            shift and go to state 29
+    LPAREN          shift and go to state 30
+    INTEGER         shift and go to state 31
+    ZERO            shift and go to state 32
+    IDENTIFIER      shift and go to state 24
+    ELGIO           shift and go to state 33
+    FUNCTION_NAME   shift and go to state 34
+
+    expression                     shift and go to state 68
+    lvalue                         shift and go to state 28
+
+state 51
+
+    (39) expression -> expression IGUAL . expression
+    (32) expression -> . lvalue EQUALS expression
+    (33) expression -> . expression PLUS expression
+    (34) expression -> . expression MINUS expression
+    (35) expression -> . expression TIMES expression
+    (36) expression -> . expression DIVIDE expression
+    (37) expression -> . expression MAIOR expression
+    (38) expression -> . expression MENOR expression
+    (39) expression -> . expression IGUAL expression
+    (40) expression -> . expression DIFERENTE expression
+    (41) expression -> . COMP expression
+    (42) expression -> . LPAREN expression RPAREN
+    (43) expression -> . INTEGER
+    (44) expression -> . ZERO
+    (45) expression -> . IDENTIFIER
+    (46) expression -> . ELGIO
+    (47) expression -> . FUNCTION_NAME LPAREN argument_list_opt RPAREN
+    (30) lvalue -> . IDENTIFIER
+    (31) lvalue -> . ELGIO
+
+    COMP            shift and go to state 29
+    LPAREN          shift and go to state 30
+    INTEGER         shift and go to state 31
+    ZERO            shift and go to state 32
+    IDENTIFIER      shift and go to state 24
+    ELGIO           shift and go to state 33
+    FUNCTION_NAME   shift and go to state 34
+
+    expression                     shift and go to state 69
+    lvalue                         shift and go to state 28
+
+state 52
+
+    (40) expression -> expression DIFERENTE . expression
+    (32) expression -> . lvalue EQUALS expression
+    (33) expression -> . expression PLUS expression
+    (34) expression -> . expression MINUS expression
+    (35) expression -> . expression TIMES expression
+    (36) expression -> . expression DIVIDE expression
+    (37) expression -> . expression MAIOR expression
+    (38) expression -> . expression MENOR expression
+    (39) expression -> . expression IGUAL expression
+    (40) expression -> . expression DIFERENTE expression
+    (41) expression -> . COMP expression
+    (42) expression -> . LPAREN expression RPAREN
+    (43) expression -> . INTEGER
+    (44) expression -> . ZERO
+    (45) expression -> . IDENTIFIER
+    (46) expression -> . ELGIO
+    (47) expression -> . FUNCTION_NAME LPAREN argument_list_opt RPAREN
+    (30) lvalue -> . IDENTIFIER
+    (31) lvalue -> . ELGIO
+
+    COMP            shift and go to state 29
+    LPAREN          shift and go to state 30
+    INTEGER         shift and go to state 31
+    ZERO            shift and go to state 32
+    IDENTIFIER      shift and go to state 24
+    ELGIO           shift and go to state 33
+    FUNCTION_NAME   shift and go to state 34
+
+    expression                     shift and go to state 70
+    lvalue                         shift and go to state 28
+
+state 53
+
+    (26) if_statement -> SE expression . DOT ENTAO DOT block senao_opt
+    (33) expression -> expression . PLUS expression
+    (34) expression -> expression . MINUS expression
+    (35) expression -> expression . TIMES expression
+    (36) expression -> expression . DIVIDE expression
+    (37) expression -> expression . MAIOR expression
+    (38) expression -> expression . MENOR expression
+    (39) expression -> expression . IGUAL expression
+    (40) expression -> expression . DIFERENTE expression
+
+    DOT             shift and go to state 71
+    PLUS            shift and go to state 45
+    MINUS           shift and go to state 46
+    TIMES           shift and go to state 47
+    DIVIDE          shift and go to state 48
+    MAIOR           shift and go to state 49
+    MENOR           shift and go to state 50
+    IGUAL           shift and go to state 51
+    DIFERENTE       shift and go to state 52
+
+
+state 54
+
+    (29) while_statement -> ENQUANTO expression . DOT block
+    (33) expression -> expression . PLUS expression
+    (34) expression -> expression . MINUS expression
+    (35) expression -> expression . TIMES expression
+    (36) expression -> expression . DIVIDE expression
+    (37) expression -> expression . MAIOR expression
+    (38) expression -> expression . MENOR expression
+    (39) expression -> expression . IGUAL expression
+    (40) expression -> expression . DIFERENTE expression
+
+    DOT             shift and go to state 72
+    PLUS            shift and go to state 45
+    MINUS           shift and go to state 46
+    TIMES           shift and go to state 47
+    DIVIDE          shift and go to state 48
+    MAIOR           shift and go to state 49
+    MENOR           shift and go to state 50
+    IGUAL           shift and go to state 51
+    DIFERENTE       shift and go to state 52
+
+
+state 55
+
+    (32) expression -> lvalue EQUALS . expression
+    (32) expression -> . lvalue EQUALS expression
+    (33) expression -> . expression PLUS expression
+    (34) expression -> . expression MINUS expression
+    (35) expression -> . expression TIMES expression
+    (36) expression -> . expression DIVIDE expression
+    (37) expression -> . expression MAIOR expression
+    (38) expression -> . expression MENOR expression
+    (39) expression -> . expression IGUAL expression
+    (40) expression -> . expression DIFERENTE expression
+    (41) expression -> . COMP expression
+    (42) expression -> . LPAREN expression RPAREN
+    (43) expression -> . INTEGER
+    (44) expression -> . ZERO
+    (45) expression -> . IDENTIFIER
+    (46) expression -> . ELGIO
+    (47) expression -> . FUNCTION_NAME LPAREN argument_list_opt RPAREN
+    (30) lvalue -> . IDENTIFIER
+    (31) lvalue -> . ELGIO
+
+    COMP            shift and go to state 29
+    LPAREN          shift and go to state 30
+    INTEGER         shift and go to state 31
+    ZERO            shift and go to state 32
+    IDENTIFIER      shift and go to state 24
+    ELGIO           shift and go to state 33
+    FUNCTION_NAME   shift and go to state 34
+
+    lvalue                         shift and go to state 28
+    expression                     shift and go to state 73
+
+state 56
+
+    (41) expression -> COMP expression .
+    (33) expression -> expression . PLUS expression
+    (34) expression -> expression . MINUS expression
+    (35) expression -> expression . TIMES expression
+    (36) expression -> expression . DIVIDE expression
+    (37) expression -> expression . MAIOR expression
+    (38) expression -> expression . MENOR expression
+    (39) expression -> expression . IGUAL expression
+    (40) expression -> expression . DIFERENTE expression
+
+    PLUS            reduce using rule 41 (expression -> COMP expression .)
+    MINUS           reduce using rule 41 (expression -> COMP expression .)
+    TIMES           reduce using rule 41 (expression -> COMP expression .)
+    DIVIDE          reduce using rule 41 (expression -> COMP expression .)
+    MAIOR           reduce using rule 41 (expression -> COMP expression .)
+    MENOR           reduce using rule 41 (expression -> COMP expression .)
+    IGUAL           reduce using rule 41 (expression -> COMP expression .)
+    DIFERENTE       reduce using rule 41 (expression -> COMP expression .)
+    DOT             reduce using rule 41 (expression -> COMP expression .)
+    RPAREN          reduce using rule 41 (expression -> COMP expression .)
+    COMMA           reduce using rule 41 (expression -> COMP expression .)
+
+  ! PLUS            [ shift and go to state 45 ]
+  ! MINUS           [ shift and go to state 46 ]
+  ! TIMES           [ shift and go to state 47 ]
+  ! DIVIDE          [ shift and go to state 48 ]
+  ! MAIOR           [ shift and go to state 49 ]
+  ! MENOR           [ shift and go to state 50 ]
+  ! IGUAL           [ shift and go to state 51 ]
+  ! DIFERENTE       [ shift and go to state 52 ]
+
+
+state 57
+
+    (42) expression -> LPAREN expression . RPAREN
+    (33) expression -> expression . PLUS expression
+    (34) expression -> expression . MINUS expression
+    (35) expression -> expression . TIMES expression
+    (36) expression -> expression . DIVIDE expression
+    (37) expression -> expression . MAIOR expression
+    (38) expression -> expression . MENOR expression
+    (39) expression -> expression . IGUAL expression
+    (40) expression -> expression . DIFERENTE expression
+
+    RPAREN          shift and go to state 74
+    PLUS            shift and go to state 45
+    MINUS           shift and go to state 46
+    TIMES           shift and go to state 47
+    DIVIDE          shift and go to state 48
+    MAIOR           shift and go to state 49
+    MENOR           shift and go to state 50
+    IGUAL           shift and go to state 51
+    DIFERENTE       shift and go to state 52
+
+
+state 58
+
+    (47) expression -> FUNCTION_NAME LPAREN . argument_list_opt RPAREN
+    (48) argument_list_opt -> . argument_list
+    (49) argument_list_opt -> . empty
+    (50) argument_list -> . argument_list COMMA expression
+    (51) argument_list -> . expression
+    (52) empty -> .
+    (32) expression -> . lvalue EQUALS expression
+    (33) expression -> . expression PLUS expression
+    (34) expression -> . expression MINUS expression
+    (35) expression -> . expression TIMES expression
+    (36) expression -> . expression DIVIDE expression
+    (37) expression -> . expression MAIOR expression
+    (38) expression -> . expression MENOR expression
+    (39) expression -> . expression IGUAL expression
+    (40) expression -> . expression DIFERENTE expression
+    (41) expression -> . COMP expression
+    (42) expression -> . LPAREN expression RPAREN
+    (43) expression -> . INTEGER
+    (44) expression -> . ZERO
+    (45) expression -> . IDENTIFIER
+    (46) expression -> . ELGIO
+    (47) expression -> . FUNCTION_NAME LPAREN argument_list_opt RPAREN
+    (30) lvalue -> . IDENTIFIER
+    (31) lvalue -> . ELGIO
+
+    RPAREN          reduce using rule 52 (empty -> .)
+    COMP            shift and go to state 29
+    LPAREN          shift and go to state 30
+    INTEGER         shift and go to state 31
+    ZERO            shift and go to state 32
+    IDENTIFIER      shift and go to state 24
+    ELGIO           shift and go to state 33
+    FUNCTION_NAME   shift and go to state 34
+
+    argument_list_opt              shift and go to state 75
+    argument_list                  shift and go to state 76
+    empty                          shift and go to state 77
+    expression                     shift and go to state 78
+    lvalue                         shift and go to state 28
+
+state 59
+
+    (12) parameter -> type_specifier IDENTIFIER .
+
+    COMMA           reduce using rule 12 (parameter -> type_specifier IDENTIFIER .)
+    RPAREN          reduce using rule 12 (parameter -> type_specifier IDENTIFIER .)
+
+
+state 60
+
+    (7) function_definition -> type_specifier FUNCTION_NAME LPAREN parameters_opt RPAREN . DOT block
+
+    DOT             shift and go to state 79
+
+
+state 61
+
+    (10) parameter_list -> parameter_list COMMA . parameter
+    (12) parameter -> . type_specifier IDENTIFIER
+    (13) type_specifier -> . INTEIRO
+
+    INTEIRO         shift and go to state 9
+
+    parameter                      shift and go to state 80
+    type_specifier                 shift and go to state 35
+
+state 62
+
+    (15) block -> INICIO DOT statement_list_opt FIM DOT .
+
+    INTEIRO         reduce using rule 15 (block -> INICIO DOT statement_list_opt FIM DOT .)
+    INICIO          reduce using rule 15 (block -> INICIO DOT statement_list_opt FIM DOT .)
+    $end            reduce using rule 15 (block -> INICIO DOT statement_list_opt FIM DOT .)
+    SE              reduce using rule 15 (block -> INICIO DOT statement_list_opt FIM DOT .)
+    ENQUANTO        reduce using rule 15 (block -> INICIO DOT statement_list_opt FIM DOT .)
+    COMP            reduce using rule 15 (block -> INICIO DOT statement_list_opt FIM DOT .)
+    LPAREN          reduce using rule 15 (block -> INICIO DOT statement_list_opt FIM DOT .)
+    INTEGER         reduce using rule 15 (block -> INICIO DOT statement_list_opt FIM DOT .)
+    ZERO            reduce using rule 15 (block -> INICIO DOT statement_list_opt FIM DOT .)
+    IDENTIFIER      reduce using rule 15 (block -> INICIO DOT statement_list_opt FIM DOT .)
+    ELGIO           reduce using rule 15 (block -> INICIO DOT statement_list_opt FIM DOT .)
+    FUNCTION_NAME   reduce using rule 15 (block -> INICIO DOT statement_list_opt FIM DOT .)
+    FIM             reduce using rule 15 (block -> INICIO DOT statement_list_opt FIM DOT .)
+    SENAO           reduce using rule 15 (block -> INICIO DOT statement_list_opt FIM DOT .)
+
+
+state 63
+
+    (33) expression -> expression PLUS expression .
+    (33) expression -> expression . PLUS expression
+    (34) expression -> expression . MINUS expression
+    (35) expression -> expression . TIMES expression
+    (36) expression -> expression . DIVIDE expression
+    (37) expression -> expression . MAIOR expression
+    (38) expression -> expression . MENOR expression
+    (39) expression -> expression . IGUAL expression
+    (40) expression -> expression . DIFERENTE expression
+
+    PLUS            reduce using rule 33 (expression -> expression PLUS expression .)
+    MINUS           reduce using rule 33 (expression -> expression PLUS expression .)
+    MAIOR           reduce using rule 33 (expression -> expression PLUS expression .)
+    MENOR           reduce using rule 33 (expression -> expression PLUS expression .)
+    IGUAL           reduce using rule 33 (expression -> expression PLUS expression .)
+    DIFERENTE       reduce using rule 33 (expression -> expression PLUS expression .)
+    DOT             reduce using rule 33 (expression -> expression PLUS expression .)
+    RPAREN          reduce using rule 33 (expression -> expression PLUS expression .)
+    COMMA           reduce using rule 33 (expression -> expression PLUS expression .)
+    TIMES           shift and go to state 47
+    DIVIDE          shift and go to state 48
+
+  ! TIMES           [ reduce using rule 33 (expression -> expression PLUS expression .) ]
+  ! DIVIDE          [ reduce using rule 33 (expression -> expression PLUS expression .) ]
+  ! PLUS            [ shift and go to state 45 ]
+  ! MINUS           [ shift and go to state 46 ]
+  ! MAIOR           [ shift and go to state 49 ]
+  ! MENOR           [ shift and go to state 50 ]
+  ! IGUAL           [ shift and go to state 51 ]
+  ! DIFERENTE       [ shift and go to state 52 ]
+
+
+state 64
+
+    (34) expression -> expression MINUS expression .
+    (33) expression -> expression . PLUS expression
+    (34) expression -> expression . MINUS expression
+    (35) expression -> expression . TIMES expression
+    (36) expression -> expression . DIVIDE expression
+    (37) expression -> expression . MAIOR expression
+    (38) expression -> expression . MENOR expression
+    (39) expression -> expression . IGUAL expression
+    (40) expression -> expression . DIFERENTE expression
+
+    PLUS            reduce using rule 34 (expression -> expression MINUS expression .)
+    MINUS           reduce using rule 34 (expression -> expression MINUS expression .)
+    MAIOR           reduce using rule 34 (expression -> expression MINUS expression .)
+    MENOR           reduce using rule 34 (expression -> expression MINUS expression .)
+    IGUAL           reduce using rule 34 (expression -> expression MINUS expression .)
+    DIFERENTE       reduce using rule 34 (expression -> expression MINUS expression .)
+    DOT             reduce using rule 34 (expression -> expression MINUS expression .)
+    RPAREN          reduce using rule 34 (expression -> expression MINUS expression .)
+    COMMA           reduce using rule 34 (expression -> expression MINUS expression .)
+    TIMES           shift and go to state 47
+    DIVIDE          shift and go to state 48
+
+  ! TIMES           [ reduce using rule 34 (expression -> expression MINUS expression .) ]
+  ! DIVIDE          [ reduce using rule 34 (expression -> expression MINUS expression .) ]
+  ! PLUS            [ shift and go to state 45 ]
+  ! MINUS           [ shift and go to state 46 ]
+  ! MAIOR           [ shift and go to state 49 ]
+  ! MENOR           [ shift and go to state 50 ]
+  ! IGUAL           [ shift and go to state 51 ]
+  ! DIFERENTE       [ shift and go to state 52 ]
+
+
+state 65
+
+    (35) expression -> expression TIMES expression .
+    (33) expression -> expression . PLUS expression
+    (34) expression -> expression . MINUS expression
+    (35) expression -> expression . TIMES expression
+    (36) expression -> expression . DIVIDE expression
+    (37) expression -> expression . MAIOR expression
+    (38) expression -> expression . MENOR expression
+    (39) expression -> expression . IGUAL expression
+    (40) expression -> expression . DIFERENTE expression
+
+    PLUS            reduce using rule 35 (expression -> expression TIMES expression .)
+    MINUS           reduce using rule 35 (expression -> expression TIMES expression .)
+    TIMES           reduce using rule 35 (expression -> expression TIMES expression .)
+    DIVIDE          reduce using rule 35 (expression -> expression TIMES expression .)
+    MAIOR           reduce using rule 35 (expression -> expression TIMES expression .)
+    MENOR           reduce using rule 35 (expression -> expression TIMES expression .)
+    IGUAL           reduce using rule 35 (expression -> expression TIMES expression .)
+    DIFERENTE       reduce using rule 35 (expression -> expression TIMES expression .)
+    DOT             reduce using rule 35 (expression -> expression TIMES expression .)
+    RPAREN          reduce using rule 35 (expression -> expression TIMES expression .)
+    COMMA           reduce using rule 35 (expression -> expression TIMES expression .)
+
+  ! PLUS            [ shift and go to state 45 ]
+  ! MINUS           [ shift and go to state 46 ]
+  ! TIMES           [ shift and go to state 47 ]
+  ! DIVIDE          [ shift and go to state 48 ]
+  ! MAIOR           [ shift and go to state 49 ]
+  ! MENOR           [ shift and go to state 50 ]
+  ! IGUAL           [ shift and go to state 51 ]
+  ! DIFERENTE       [ shift and go to state 52 ]
+
+
+state 66
+
+    (36) expression -> expression DIVIDE expression .
+    (33) expression -> expression . PLUS expression
+    (34) expression -> expression . MINUS expression
+    (35) expression -> expression . TIMES expression
+    (36) expression -> expression . DIVIDE expression
+    (37) expression -> expression . MAIOR expression
+    (38) expression -> expression . MENOR expression
+    (39) expression -> expression . IGUAL expression
+    (40) expression -> expression . DIFERENTE expression
+
+    PLUS            reduce using rule 36 (expression -> expression DIVIDE expression .)
+    MINUS           reduce using rule 36 (expression -> expression DIVIDE expression .)
+    TIMES           reduce using rule 36 (expression -> expression DIVIDE expression .)
+    DIVIDE          reduce using rule 36 (expression -> expression DIVIDE expression .)
+    MAIOR           reduce using rule 36 (expression -> expression DIVIDE expression .)
+    MENOR           reduce using rule 36 (expression -> expression DIVIDE expression .)
+    IGUAL           reduce using rule 36 (expression -> expression DIVIDE expression .)
+    DIFERENTE       reduce using rule 36 (expression -> expression DIVIDE expression .)
+    DOT             reduce using rule 36 (expression -> expression DIVIDE expression .)
+    RPAREN          reduce using rule 36 (expression -> expression DIVIDE expression .)
+    COMMA           reduce using rule 36 (expression -> expression DIVIDE expression .)
+
+  ! PLUS            [ shift and go to state 45 ]
+  ! MINUS           [ shift and go to state 46 ]
+  ! TIMES           [ shift and go to state 47 ]
+  ! DIVIDE          [ shift and go to state 48 ]
+  ! MAIOR           [ shift and go to state 49 ]
+  ! MENOR           [ shift and go to state 50 ]
+  ! IGUAL           [ shift and go to state 51 ]
+  ! DIFERENTE       [ shift and go to state 52 ]
+
+
+state 67
+
+    (37) expression -> expression MAIOR expression .
+    (33) expression -> expression . PLUS expression
+    (34) expression -> expression . MINUS expression
+    (35) expression -> expression . TIMES expression
+    (36) expression -> expression . DIVIDE expression
+    (37) expression -> expression . MAIOR expression
+    (38) expression -> expression . MENOR expression
+    (39) expression -> expression . IGUAL expression
+    (40) expression -> expression . DIFERENTE expression
+
+    MAIOR           reduce using rule 37 (expression -> expression MAIOR expression .)
+    MENOR           reduce using rule 37 (expression -> expression MAIOR expression .)
+    IGUAL           reduce using rule 37 (expression -> expression MAIOR expression .)
+    DIFERENTE       reduce using rule 37 (expression -> expression MAIOR expression .)
+    DOT             reduce using rule 37 (expression -> expression MAIOR expression .)
+    RPAREN          reduce using rule 37 (expression -> expression MAIOR expression .)
+    COMMA           reduce using rule 37 (expression -> expression MAIOR expression .)
+    PLUS            shift and go to state 45
+    MINUS           shift and go to state 46
+    TIMES           shift and go to state 47
+    DIVIDE          shift and go to state 48
+
+  ! PLUS            [ reduce using rule 37 (expression -> expression MAIOR expression .) ]
+  ! MINUS           [ reduce using rule 37 (expression -> expression MAIOR expression .) ]
+  ! TIMES           [ reduce using rule 37 (expression -> expression MAIOR expression .) ]
+  ! DIVIDE          [ reduce using rule 37 (expression -> expression MAIOR expression .) ]
+  ! MAIOR           [ shift and go to state 49 ]
+  ! MENOR           [ shift and go to state 50 ]
+  ! IGUAL           [ shift and go to state 51 ]
+  ! DIFERENTE       [ shift and go to state 52 ]
+
+
+state 68
+
+    (38) expression -> expression MENOR expression .
+    (33) expression -> expression . PLUS expression
+    (34) expression -> expression . MINUS expression
+    (35) expression -> expression . TIMES expression
+    (36) expression -> expression . DIVIDE expression
+    (37) expression -> expression . MAIOR expression
+    (38) expression -> expression . MENOR expression
+    (39) expression -> expression . IGUAL expression
+    (40) expression -> expression . DIFERENTE expression
+
+    MAIOR           reduce using rule 38 (expression -> expression MENOR expression .)
+    MENOR           reduce using rule 38 (expression -> expression MENOR expression .)
+    IGUAL           reduce using rule 38 (expression -> expression MENOR expression .)
+    DIFERENTE       reduce using rule 38 (expression -> expression MENOR expression .)
+    DOT             reduce using rule 38 (expression -> expression MENOR expression .)
+    RPAREN          reduce using rule 38 (expression -> expression MENOR expression .)
+    COMMA           reduce using rule 38 (expression -> expression MENOR expression .)
+    PLUS            shift and go to state 45
+    MINUS           shift and go to state 46
+    TIMES           shift and go to state 47
+    DIVIDE          shift and go to state 48
+
+  ! PLUS            [ reduce using rule 38 (expression -> expression MENOR expression .) ]
+  ! MINUS           [ reduce using rule 38 (expression -> expression MENOR expression .) ]
+  ! TIMES           [ reduce using rule 38 (expression -> expression MENOR expression .) ]
+  ! DIVIDE          [ reduce using rule 38 (expression -> expression MENOR expression .) ]
+  ! MAIOR           [ shift and go to state 49 ]
+  ! MENOR           [ shift and go to state 50 ]
+  ! IGUAL           [ shift and go to state 51 ]
+  ! DIFERENTE       [ shift and go to state 52 ]
+
+
+state 69
+
+    (39) expression -> expression IGUAL expression .
+    (33) expression -> expression . PLUS expression
+    (34) expression -> expression . MINUS expression
+    (35) expression -> expression . TIMES expression
+    (36) expression -> expression . DIVIDE expression
+    (37) expression -> expression . MAIOR expression
+    (38) expression -> expression . MENOR expression
+    (39) expression -> expression . IGUAL expression
+    (40) expression -> expression . DIFERENTE expression
+
+    IGUAL           reduce using rule 39 (expression -> expression IGUAL expression .)
+    DIFERENTE       reduce using rule 39 (expression -> expression IGUAL expression .)
+    DOT             reduce using rule 39 (expression -> expression IGUAL expression .)
+    RPAREN          reduce using rule 39 (expression -> expression IGUAL expression .)
+    COMMA           reduce using rule 39 (expression -> expression IGUAL expression .)
+    PLUS            shift and go to state 45
+    MINUS           shift and go to state 46
+    TIMES           shift and go to state 47
+    DIVIDE          shift and go to state 48
+    MAIOR           shift and go to state 49
+    MENOR           shift and go to state 50
+
+  ! PLUS            [ reduce using rule 39 (expression -> expression IGUAL expression .) ]
+  ! MINUS           [ reduce using rule 39 (expression -> expression IGUAL expression .) ]
+  ! TIMES           [ reduce using rule 39 (expression -> expression IGUAL expression .) ]
+  ! DIVIDE          [ reduce using rule 39 (expression -> expression IGUAL expression .) ]
+  ! MAIOR           [ reduce using rule 39 (expression -> expression IGUAL expression .) ]
+  ! MENOR           [ reduce using rule 39 (expression -> expression IGUAL expression .) ]
+  ! IGUAL           [ shift and go to state 51 ]
+  ! DIFERENTE       [ shift and go to state 52 ]
+
+
+state 70
+
+    (40) expression -> expression DIFERENTE expression .
+    (33) expression -> expression . PLUS expression
+    (34) expression -> expression . MINUS expression
+    (35) expression -> expression . TIMES expression
+    (36) expression -> expression . DIVIDE expression
+    (37) expression -> expression . MAIOR expression
+    (38) expression -> expression . MENOR expression
+    (39) expression -> expression . IGUAL expression
+    (40) expression -> expression . DIFERENTE expression
+
+    IGUAL           reduce using rule 40 (expression -> expression DIFERENTE expression .)
+    DIFERENTE       reduce using rule 40 (expression -> expression DIFERENTE expression .)
+    DOT             reduce using rule 40 (expression -> expression DIFERENTE expression .)
+    RPAREN          reduce using rule 40 (expression -> expression DIFERENTE expression .)
+    COMMA           reduce using rule 40 (expression -> expression DIFERENTE expression .)
+    PLUS            shift and go to state 45
+    MINUS           shift and go to state 46
+    TIMES           shift and go to state 47
+    DIVIDE          shift and go to state 48
+    MAIOR           shift and go to state 49
+    MENOR           shift and go to state 50
+
+  ! PLUS            [ reduce using rule 40 (expression -> expression DIFERENTE expression .) ]
+  ! MINUS           [ reduce using rule 40 (expression -> expression DIFERENTE expression .) ]
+  ! TIMES           [ reduce using rule 40 (expression -> expression DIFERENTE expression .) ]
+  ! DIVIDE          [ reduce using rule 40 (expression -> expression DIFERENTE expression .) ]
+  ! MAIOR           [ reduce using rule 40 (expression -> expression DIFERENTE expression .) ]
+  ! MENOR           [ reduce using rule 40 (expression -> expression DIFERENTE expression .) ]
+  ! IGUAL           [ shift and go to state 51 ]
+  ! DIFERENTE       [ shift and go to state 52 ]
+
+
+state 71
+
+    (26) if_statement -> SE expression DOT . ENTAO DOT block senao_opt
+
+    ENTAO           shift and go to state 81
+
+
+state 72
+
+    (29) while_statement -> ENQUANTO expression DOT . block
+    (15) block -> . INICIO DOT statement_list_opt FIM DOT
+
+    INICIO          shift and go to state 10
+
+    block                          shift and go to state 82
+
+state 73
+
+    (32) expression -> lvalue EQUALS expression .
+    (33) expression -> expression . PLUS expression
+    (34) expression -> expression . MINUS expression
+    (35) expression -> expression . TIMES expression
+    (36) expression -> expression . DIVIDE expression
+    (37) expression -> expression . MAIOR expression
+    (38) expression -> expression . MENOR expression
+    (39) expression -> expression . IGUAL expression
+    (40) expression -> expression . DIFERENTE expression
+
+    DOT             reduce using rule 32 (expression -> lvalue EQUALS expression .)
+    RPAREN          reduce using rule 32 (expression -> lvalue EQUALS expression .)
+    COMMA           reduce using rule 32 (expression -> lvalue EQUALS expression .)
+    PLUS            shift and go to state 45
+    MINUS           shift and go to state 46
+    TIMES           shift and go to state 47
+    DIVIDE          shift and go to state 48
+    MAIOR           shift and go to state 49
+    MENOR           shift and go to state 50
+    IGUAL           shift and go to state 51
+    DIFERENTE       shift and go to state 52
+
+  ! PLUS            [ reduce using rule 32 (expression -> lvalue EQUALS expression .) ]
+  ! MINUS           [ reduce using rule 32 (expression -> lvalue EQUALS expression .) ]
+  ! TIMES           [ reduce using rule 32 (expression -> lvalue EQUALS expression .) ]
+  ! DIVIDE          [ reduce using rule 32 (expression -> lvalue EQUALS expression .) ]
+  ! MAIOR           [ reduce using rule 32 (expression -> lvalue EQUALS expression .) ]
+  ! MENOR           [ reduce using rule 32 (expression -> lvalue EQUALS expression .) ]
+  ! IGUAL           [ reduce using rule 32 (expression -> lvalue EQUALS expression .) ]
+  ! DIFERENTE       [ reduce using rule 32 (expression -> lvalue EQUALS expression .) ]
+
+
+state 74
+
+    (42) expression -> LPAREN expression RPAREN .
+
+    PLUS            reduce using rule 42 (expression -> LPAREN expression RPAREN .)
+    MINUS           reduce using rule 42 (expression -> LPAREN expression RPAREN .)
+    TIMES           reduce using rule 42 (expression -> LPAREN expression RPAREN .)
+    DIVIDE          reduce using rule 42 (expression -> LPAREN expression RPAREN .)
+    MAIOR           reduce using rule 42 (expression -> LPAREN expression RPAREN .)
+    MENOR           reduce using rule 42 (expression -> LPAREN expression RPAREN .)
+    IGUAL           reduce using rule 42 (expression -> LPAREN expression RPAREN .)
+    DIFERENTE       reduce using rule 42 (expression -> LPAREN expression RPAREN .)
+    DOT             reduce using rule 42 (expression -> LPAREN expression RPAREN .)
+    RPAREN          reduce using rule 42 (expression -> LPAREN expression RPAREN .)
+    COMMA           reduce using rule 42 (expression -> LPAREN expression RPAREN .)
+
+
+state 75
+
+    (47) expression -> FUNCTION_NAME LPAREN argument_list_opt . RPAREN
+
+    RPAREN          shift and go to state 83
+
+
+state 76
+
+    (48) argument_list_opt -> argument_list .
+    (50) argument_list -> argument_list . COMMA expression
+
+    RPAREN          reduce using rule 48 (argument_list_opt -> argument_list .)
+    COMMA           shift and go to state 84
+
+
+state 77
+
+    (49) argument_list_opt -> empty .
+
+    RPAREN          reduce using rule 49 (argument_list_opt -> empty .)
+
+
+state 78
+
+    (51) argument_list -> expression .
+    (33) expression -> expression . PLUS expression
+    (34) expression -> expression . MINUS expression
+    (35) expression -> expression . TIMES expression
+    (36) expression -> expression . DIVIDE expression
+    (37) expression -> expression . MAIOR expression
+    (38) expression -> expression . MENOR expression
+    (39) expression -> expression . IGUAL expression
+    (40) expression -> expression . DIFERENTE expression
+
+    COMMA           reduce using rule 51 (argument_list -> expression .)
+    RPAREN          reduce using rule 51 (argument_list -> expression .)
+    PLUS            shift and go to state 45
+    MINUS           shift and go to state 46
+    TIMES           shift and go to state 47
+    DIVIDE          shift and go to state 48
+    MAIOR           shift and go to state 49
+    MENOR           shift and go to state 50
+    IGUAL           shift and go to state 51
+    DIFERENTE       shift and go to state 52
+
+
+state 79
+
+    (7) function_definition -> type_specifier FUNCTION_NAME LPAREN parameters_opt RPAREN DOT . block
+    (15) block -> . INICIO DOT statement_list_opt FIM DOT
+
+    INICIO          shift and go to state 10
+
+    block                          shift and go to state 85
+
+state 80
+
+    (10) parameter_list -> parameter_list COMMA parameter .
+
+    COMMA           reduce using rule 10 (parameter_list -> parameter_list COMMA parameter .)
+    RPAREN          reduce using rule 10 (parameter_list -> parameter_list COMMA parameter .)
+
+
+state 81
+
+    (26) if_statement -> SE expression DOT ENTAO . DOT block senao_opt
+
+    DOT             shift and go to state 86
+
+
+state 82
+
+    (29) while_statement -> ENQUANTO expression DOT block .
+
+    SE              reduce using rule 29 (while_statement -> ENQUANTO expression DOT block .)
+    ENQUANTO        reduce using rule 29 (while_statement -> ENQUANTO expression DOT block .)
+    INTEIRO         reduce using rule 29 (while_statement -> ENQUANTO expression DOT block .)
+    COMP            reduce using rule 29 (while_statement -> ENQUANTO expression DOT block .)
+    LPAREN          reduce using rule 29 (while_statement -> ENQUANTO expression DOT block .)
+    INTEGER         reduce using rule 29 (while_statement -> ENQUANTO expression DOT block .)
+    ZERO            reduce using rule 29 (while_statement -> ENQUANTO expression DOT block .)
+    IDENTIFIER      reduce using rule 29 (while_statement -> ENQUANTO expression DOT block .)
+    ELGIO           reduce using rule 29 (while_statement -> ENQUANTO expression DOT block .)
+    FUNCTION_NAME   reduce using rule 29 (while_statement -> ENQUANTO expression DOT block .)
+    FIM             reduce using rule 29 (while_statement -> ENQUANTO expression DOT block .)
+
+
+state 83
+
+    (47) expression -> FUNCTION_NAME LPAREN argument_list_opt RPAREN .
+
+    PLUS            reduce using rule 47 (expression -> FUNCTION_NAME LPAREN argument_list_opt RPAREN .)
+    MINUS           reduce using rule 47 (expression -> FUNCTION_NAME LPAREN argument_list_opt RPAREN .)
+    TIMES           reduce using rule 47 (expression -> FUNCTION_NAME LPAREN argument_list_opt RPAREN .)
+    DIVIDE          reduce using rule 47 (expression -> FUNCTION_NAME LPAREN argument_list_opt RPAREN .)
+    MAIOR           reduce using rule 47 (expression -> FUNCTION_NAME LPAREN argument_list_opt RPAREN .)
+    MENOR           reduce using rule 47 (expression -> FUNCTION_NAME LPAREN argument_list_opt RPAREN .)
+    IGUAL           reduce using rule 47 (expression -> FUNCTION_NAME LPAREN argument_list_opt RPAREN .)
+    DIFERENTE       reduce using rule 47 (expression -> FUNCTION_NAME LPAREN argument_list_opt RPAREN .)
+    DOT             reduce using rule 47 (expression -> FUNCTION_NAME LPAREN argument_list_opt RPAREN .)
+    RPAREN          reduce using rule 47 (expression -> FUNCTION_NAME LPAREN argument_list_opt RPAREN .)
+    COMMA           reduce using rule 47 (expression -> FUNCTION_NAME LPAREN argument_list_opt RPAREN .)
+
+
+state 84
+
+    (50) argument_list -> argument_list COMMA . expression
+    (32) expression -> . lvalue EQUALS expression
+    (33) expression -> . expression PLUS expression
+    (34) expression -> . expression MINUS expression
+    (35) expression -> . expression TIMES expression
+    (36) expression -> . expression DIVIDE expression
+    (37) expression -> . expression MAIOR expression
+    (38) expression -> . expression MENOR expression
+    (39) expression -> . expression IGUAL expression
+    (40) expression -> . expression DIFERENTE expression
+    (41) expression -> . COMP expression
+    (42) expression -> . LPAREN expression RPAREN
+    (43) expression -> . INTEGER
+    (44) expression -> . ZERO
+    (45) expression -> . IDENTIFIER
+    (46) expression -> . ELGIO
+    (47) expression -> . FUNCTION_NAME LPAREN argument_list_opt RPAREN
+    (30) lvalue -> . IDENTIFIER
+    (31) lvalue -> . ELGIO
+
+    COMP            shift and go to state 29
+    LPAREN          shift and go to state 30
+    INTEGER         shift and go to state 31
+    ZERO            shift and go to state 32
+    IDENTIFIER      shift and go to state 24
+    ELGIO           shift and go to state 33
+    FUNCTION_NAME   shift and go to state 34
+
+    expression                     shift and go to state 87
+    lvalue                         shift and go to state 28
+
+state 85
+
+    (7) function_definition -> type_specifier FUNCTION_NAME LPAREN parameters_opt RPAREN DOT block .
+
+    INTEIRO         reduce using rule 7 (function_definition -> type_specifier FUNCTION_NAME LPAREN parameters_opt RPAREN DOT block .)
+    INICIO          reduce using rule 7 (function_definition -> type_specifier FUNCTION_NAME LPAREN parameters_opt RPAREN DOT block .)
+    $end            reduce using rule 7 (function_definition -> type_specifier FUNCTION_NAME LPAREN parameters_opt RPAREN DOT block .)
+
+
+state 86
+
+    (26) if_statement -> SE expression DOT ENTAO DOT . block senao_opt
+    (15) block -> . INICIO DOT statement_list_opt FIM DOT
+
+    INICIO          shift and go to state 10
+
+    block                          shift and go to state 88
+
+state 87
+
+    (50) argument_list -> argument_list COMMA expression .
+    (33) expression -> expression . PLUS expression
+    (34) expression -> expression . MINUS expression
+    (35) expression -> expression . TIMES expression
+    (36) expression -> expression . DIVIDE expression
+    (37) expression -> expression . MAIOR expression
+    (38) expression -> expression . MENOR expression
+    (39) expression -> expression . IGUAL expression
+    (40) expression -> expression . DIFERENTE expression
+
+    COMMA           reduce using rule 50 (argument_list -> argument_list COMMA expression .)
+    RPAREN          reduce using rule 50 (argument_list -> argument_list COMMA expression .)
+    PLUS            shift and go to state 45
+    MINUS           shift and go to state 46
+    TIMES           shift and go to state 47
+    DIVIDE          shift and go to state 48
+    MAIOR           shift and go to state 49
+    MENOR           shift and go to state 50
+    IGUAL           shift and go to state 51
+    DIFERENTE       shift and go to state 52
+
+
+state 88
+
+    (26) if_statement -> SE expression DOT ENTAO DOT block . senao_opt
+    (27) senao_opt -> . SENAO DOT block
+    (28) senao_opt -> . empty
+    (52) empty -> .
+
+    SENAO           shift and go to state 90
+    SE              reduce using rule 52 (empty -> .)
+    ENQUANTO        reduce using rule 52 (empty -> .)
+    INTEIRO         reduce using rule 52 (empty -> .)
+    COMP            reduce using rule 52 (empty -> .)
+    LPAREN          reduce using rule 52 (empty -> .)
+    INTEGER         reduce using rule 52 (empty -> .)
+    ZERO            reduce using rule 52 (empty -> .)
+    IDENTIFIER      reduce using rule 52 (empty -> .)
+    ELGIO           reduce using rule 52 (empty -> .)
+    FUNCTION_NAME   reduce using rule 52 (empty -> .)
+    FIM             reduce using rule 52 (empty -> .)
+
+    senao_opt                      shift and go to state 89
+    empty                          shift and go to state 91
+
+state 89
+
+    (26) if_statement -> SE expression DOT ENTAO DOT block senao_opt .
+
+    SE              reduce using rule 26 (if_statement -> SE expression DOT ENTAO DOT block senao_opt .)
+    ENQUANTO        reduce using rule 26 (if_statement -> SE expression DOT ENTAO DOT block senao_opt .)
+    INTEIRO         reduce using rule 26 (if_statement -> SE expression DOT ENTAO DOT block senao_opt .)
+    COMP            reduce using rule 26 (if_statement -> SE expression DOT ENTAO DOT block senao_opt .)
+    LPAREN          reduce using rule 26 (if_statement -> SE expression DOT ENTAO DOT block senao_opt .)
+    INTEGER         reduce using rule 26 (if_statement -> SE expression DOT ENTAO DOT block senao_opt .)
+    ZERO            reduce using rule 26 (if_statement -> SE expression DOT ENTAO DOT block senao_opt .)
+    IDENTIFIER      reduce using rule 26 (if_statement -> SE expression DOT ENTAO DOT block senao_opt .)
+    ELGIO           reduce using rule 26 (if_statement -> SE expression DOT ENTAO DOT block senao_opt .)
+    FUNCTION_NAME   reduce using rule 26 (if_statement -> SE expression DOT ENTAO DOT block senao_opt .)
+    FIM             reduce using rule 26 (if_statement -> SE expression DOT ENTAO DOT block senao_opt .)
+
+
+state 90
+
+    (27) senao_opt -> SENAO . DOT block
+
+    DOT             shift and go to state 92
+
+
+state 91
+
+    (28) senao_opt -> empty .
+
+    SE              reduce using rule 28 (senao_opt -> empty .)
+    ENQUANTO        reduce using rule 28 (senao_opt -> empty .)
+    INTEIRO         reduce using rule 28 (senao_opt -> empty .)
+    COMP            reduce using rule 28 (senao_opt -> empty .)
+    LPAREN          reduce using rule 28 (senao_opt -> empty .)
+    INTEGER         reduce using rule 28 (senao_opt -> empty .)
+    ZERO            reduce using rule 28 (senao_opt -> empty .)
+    IDENTIFIER      reduce using rule 28 (senao_opt -> empty .)
+    ELGIO           reduce using rule 28 (senao_opt -> empty .)
+    FUNCTION_NAME   reduce using rule 28 (senao_opt -> empty .)
+    FIM             reduce using rule 28 (senao_opt -> empty .)
+
+
+state 92
+
+    (27) senao_opt -> SENAO DOT . block
+    (15) block -> . INICIO DOT statement_list_opt FIM DOT
+
+    INICIO          shift and go to state 10
+
+    block                          shift and go to state 93
+
+state 93
+
+    (27) senao_opt -> SENAO DOT block .
+
+    SE              reduce using rule 27 (senao_opt -> SENAO DOT block .)
+    ENQUANTO        reduce using rule 27 (senao_opt -> SENAO DOT block .)
+    INTEIRO         reduce using rule 27 (senao_opt -> SENAO DOT block .)
+    COMP            reduce using rule 27 (senao_opt -> SENAO DOT block .)
+    LPAREN          reduce using rule 27 (senao_opt -> SENAO DOT block .)
+    INTEGER         reduce using rule 27 (senao_opt -> SENAO DOT block .)
+    ZERO            reduce using rule 27 (senao_opt -> SENAO DOT block .)
+    IDENTIFIER      reduce using rule 27 (senao_opt -> SENAO DOT block .)
+    ELGIO           reduce using rule 27 (senao_opt -> SENAO DOT block .)
+    FUNCTION_NAME   reduce using rule 27 (senao_opt -> SENAO DOT block .)
+    FIM             reduce using rule 27 (senao_opt -> SENAO DOT block .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for INTEIRO in state 0 resolved as shift
+WARNING: shift/reduce conflict for INICIO in state 0 resolved as shift

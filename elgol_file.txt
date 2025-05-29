@@ -1,18 +1,27 @@
-inteiro _Soma (inteiro Num, inteiro Dois) .
-inicio .
-    elgio = Num + Dois .
-fim .
+# erros sintáticos
+inteiro _Fazalgo(inteiro Fazum, inteiro). # falta id depois do inteiro
+inicio   						# faltou .
+   inteiro Lixo.
 
-inteiro Lixo . # minha variável
-inteiro Teste .
-inteiro Vi
-inteiro COMA,Comma .
-Lixo = 34 .
-comp Lixo .
-se Lixo maior zero .
-entao.
+   Lixo = Fazum - Fazdois + zero x. # operador x precisa de 2 operandos
+   elgio = Lixo + _Soma(20,30).     # elgio não permite ter função
+fim.
+
 inicio.
-        Lixo = zero .
-        Teste = 300
-        Resultado = _Soma (Lixo, Teste) .
+  inteiro Variavel, Lixo.   # Não pode ter , aqui
+  inteiro Teste.
+
+  Variavel = zero.
+
+  Teste = 45 x _Fazalgo (50, Variavel).
+
+  se Teste maior zero.
+  entao.
+  inicio.
+    Variavel = Teste igual Lixo. # Somente exp mat podem ser atribuídas
+  fim.
+  # erro semântico (não implementar). Faltou senao
+
+  Variavel = Variavel + Nova + 3 - 5 x 2 / 2 + Teste.
+  # semântico: Nova não foi declarada
 fim.
