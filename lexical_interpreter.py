@@ -6,20 +6,27 @@ from tokens import reserved_words
 
 class ElgolLexer:
     """
-    A lexer for the Elgol programming language, implemented using the PLY (Python Lex-Yacc) library.
-
-    This class performs lexical analysis of Elgol source code, converting it into a sequence
-    of tokens. These tokens can then be processed by a parser or other tools. Tokens are defined
-    based on regular expressions and include operators, identifiers, reserved words, literals,
-    comments, and other language elements. It also handles invalid characters and tracks
-    parentheses balance.
-
+    The purpose of this class is to perform lexical analysis of source code written in Elgol, converting it into a sequence
+    of tokens that can be processed by a parser or other tools. Tokens are defined based on regular expressions and include
+    operators, identifiers, reserved words, literals, and other language elements.
+    
+    Main functionalities:
+        - Tokenization of input strings based on predefined rules.
+        - Support for reserved words and valid identifiers.
+        - Handling of comments and invalid characters.
+        - Tracking of parentheses for syntax validation.
+    
     Attributes:
-    - `tokens` (list): A list of token names recognized by the lexer.
-    - `reserved_map` (dict): A mapping of reserved words to their token types.
-    - `t_ignore` (str): Characters to be ignored by the lexer (spaces and tabs).
-    - `paren_count` (int): A counter to track the balance of open parentheses.
-    - `lexer` (lex.Lexer): The PLY lexer instance.
+        - `tokens` (list): A list of token names recognized by the lexer.
+        - `reserved_map` (dict): A mapping of reserved words to their token types.
+        - `paren_count` (int): A counter to track the balance of open parentheses.
+    
+    Main methods:
+        - `input(data)`: Receives an input string for analysis.
+        - `token()`: Returns the next token from the input.
+        - `tokenize(data)`: Tokenizes the entire input string and returns a list of tokens.
+        - Methods starting with `t_`: Define the matching rules for each token type.
+    This lexer is designed to be used as part of a compiler or interpreter for the Elgol language.
     """
 
     tokens = token_names
