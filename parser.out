@@ -1175,26 +1175,34 @@ state 56
     (39) expression -> expression . IGUAL expression
     (40) expression -> expression . DIFERENTE expression
 
-    PLUS            reduce using rule 41 (expression -> COMP expression .)
-    MINUS           reduce using rule 41 (expression -> COMP expression .)
-    TIMES           reduce using rule 41 (expression -> COMP expression .)
-    DIVIDE          reduce using rule 41 (expression -> COMP expression .)
-    MAIOR           reduce using rule 41 (expression -> COMP expression .)
-    MENOR           reduce using rule 41 (expression -> COMP expression .)
-    IGUAL           reduce using rule 41 (expression -> COMP expression .)
-    DIFERENTE       reduce using rule 41 (expression -> COMP expression .)
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for MAIOR resolved as shift
+  ! shift/reduce conflict for MENOR resolved as shift
+  ! shift/reduce conflict for IGUAL resolved as shift
+  ! shift/reduce conflict for DIFERENTE resolved as shift
     DOT             reduce using rule 41 (expression -> COMP expression .)
     RPAREN          reduce using rule 41 (expression -> COMP expression .)
     COMMA           reduce using rule 41 (expression -> COMP expression .)
+    PLUS            shift and go to state 45
+    MINUS           shift and go to state 46
+    TIMES           shift and go to state 47
+    DIVIDE          shift and go to state 48
+    MAIOR           shift and go to state 49
+    MENOR           shift and go to state 50
+    IGUAL           shift and go to state 51
+    DIFERENTE       shift and go to state 52
 
-  ! PLUS            [ shift and go to state 45 ]
-  ! MINUS           [ shift and go to state 46 ]
-  ! TIMES           [ shift and go to state 47 ]
-  ! DIVIDE          [ shift and go to state 48 ]
-  ! MAIOR           [ shift and go to state 49 ]
-  ! MENOR           [ shift and go to state 50 ]
-  ! IGUAL           [ shift and go to state 51 ]
-  ! DIFERENTE       [ shift and go to state 52 ]
+  ! PLUS            [ reduce using rule 41 (expression -> COMP expression .) ]
+  ! MINUS           [ reduce using rule 41 (expression -> COMP expression .) ]
+  ! TIMES           [ reduce using rule 41 (expression -> COMP expression .) ]
+  ! DIVIDE          [ reduce using rule 41 (expression -> COMP expression .) ]
+  ! MAIOR           [ reduce using rule 41 (expression -> COMP expression .) ]
+  ! MENOR           [ reduce using rule 41 (expression -> COMP expression .) ]
+  ! IGUAL           [ reduce using rule 41 (expression -> COMP expression .) ]
+  ! DIFERENTE       [ reduce using rule 41 (expression -> COMP expression .) ]
 
 
 state 57
@@ -1320,26 +1328,34 @@ state 63
     (39) expression -> expression . IGUAL expression
     (40) expression -> expression . DIFERENTE expression
 
-    PLUS            reduce using rule 33 (expression -> expression PLUS expression .)
-    MINUS           reduce using rule 33 (expression -> expression PLUS expression .)
-    MAIOR           reduce using rule 33 (expression -> expression PLUS expression .)
-    MENOR           reduce using rule 33 (expression -> expression PLUS expression .)
-    IGUAL           reduce using rule 33 (expression -> expression PLUS expression .)
-    DIFERENTE       reduce using rule 33 (expression -> expression PLUS expression .)
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for MAIOR resolved as shift
+  ! shift/reduce conflict for MENOR resolved as shift
+  ! shift/reduce conflict for IGUAL resolved as shift
+  ! shift/reduce conflict for DIFERENTE resolved as shift
     DOT             reduce using rule 33 (expression -> expression PLUS expression .)
     RPAREN          reduce using rule 33 (expression -> expression PLUS expression .)
     COMMA           reduce using rule 33 (expression -> expression PLUS expression .)
+    PLUS            shift and go to state 45
+    MINUS           shift and go to state 46
     TIMES           shift and go to state 47
     DIVIDE          shift and go to state 48
+    MAIOR           shift and go to state 49
+    MENOR           shift and go to state 50
+    IGUAL           shift and go to state 51
+    DIFERENTE       shift and go to state 52
 
+  ! PLUS            [ reduce using rule 33 (expression -> expression PLUS expression .) ]
+  ! MINUS           [ reduce using rule 33 (expression -> expression PLUS expression .) ]
   ! TIMES           [ reduce using rule 33 (expression -> expression PLUS expression .) ]
   ! DIVIDE          [ reduce using rule 33 (expression -> expression PLUS expression .) ]
-  ! PLUS            [ shift and go to state 45 ]
-  ! MINUS           [ shift and go to state 46 ]
-  ! MAIOR           [ shift and go to state 49 ]
-  ! MENOR           [ shift and go to state 50 ]
-  ! IGUAL           [ shift and go to state 51 ]
-  ! DIFERENTE       [ shift and go to state 52 ]
+  ! MAIOR           [ reduce using rule 33 (expression -> expression PLUS expression .) ]
+  ! MENOR           [ reduce using rule 33 (expression -> expression PLUS expression .) ]
+  ! IGUAL           [ reduce using rule 33 (expression -> expression PLUS expression .) ]
+  ! DIFERENTE       [ reduce using rule 33 (expression -> expression PLUS expression .) ]
 
 
 state 64
@@ -1354,26 +1370,34 @@ state 64
     (39) expression -> expression . IGUAL expression
     (40) expression -> expression . DIFERENTE expression
 
-    PLUS            reduce using rule 34 (expression -> expression MINUS expression .)
-    MINUS           reduce using rule 34 (expression -> expression MINUS expression .)
-    MAIOR           reduce using rule 34 (expression -> expression MINUS expression .)
-    MENOR           reduce using rule 34 (expression -> expression MINUS expression .)
-    IGUAL           reduce using rule 34 (expression -> expression MINUS expression .)
-    DIFERENTE       reduce using rule 34 (expression -> expression MINUS expression .)
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for MAIOR resolved as shift
+  ! shift/reduce conflict for MENOR resolved as shift
+  ! shift/reduce conflict for IGUAL resolved as shift
+  ! shift/reduce conflict for DIFERENTE resolved as shift
     DOT             reduce using rule 34 (expression -> expression MINUS expression .)
     RPAREN          reduce using rule 34 (expression -> expression MINUS expression .)
     COMMA           reduce using rule 34 (expression -> expression MINUS expression .)
+    PLUS            shift and go to state 45
+    MINUS           shift and go to state 46
     TIMES           shift and go to state 47
     DIVIDE          shift and go to state 48
+    MAIOR           shift and go to state 49
+    MENOR           shift and go to state 50
+    IGUAL           shift and go to state 51
+    DIFERENTE       shift and go to state 52
 
+  ! PLUS            [ reduce using rule 34 (expression -> expression MINUS expression .) ]
+  ! MINUS           [ reduce using rule 34 (expression -> expression MINUS expression .) ]
   ! TIMES           [ reduce using rule 34 (expression -> expression MINUS expression .) ]
   ! DIVIDE          [ reduce using rule 34 (expression -> expression MINUS expression .) ]
-  ! PLUS            [ shift and go to state 45 ]
-  ! MINUS           [ shift and go to state 46 ]
-  ! MAIOR           [ shift and go to state 49 ]
-  ! MENOR           [ shift and go to state 50 ]
-  ! IGUAL           [ shift and go to state 51 ]
-  ! DIFERENTE       [ shift and go to state 52 ]
+  ! MAIOR           [ reduce using rule 34 (expression -> expression MINUS expression .) ]
+  ! MENOR           [ reduce using rule 34 (expression -> expression MINUS expression .) ]
+  ! IGUAL           [ reduce using rule 34 (expression -> expression MINUS expression .) ]
+  ! DIFERENTE       [ reduce using rule 34 (expression -> expression MINUS expression .) ]
 
 
 state 65
@@ -1388,26 +1412,34 @@ state 65
     (39) expression -> expression . IGUAL expression
     (40) expression -> expression . DIFERENTE expression
 
-    PLUS            reduce using rule 35 (expression -> expression TIMES expression .)
-    MINUS           reduce using rule 35 (expression -> expression TIMES expression .)
-    TIMES           reduce using rule 35 (expression -> expression TIMES expression .)
-    DIVIDE          reduce using rule 35 (expression -> expression TIMES expression .)
-    MAIOR           reduce using rule 35 (expression -> expression TIMES expression .)
-    MENOR           reduce using rule 35 (expression -> expression TIMES expression .)
-    IGUAL           reduce using rule 35 (expression -> expression TIMES expression .)
-    DIFERENTE       reduce using rule 35 (expression -> expression TIMES expression .)
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for MAIOR resolved as shift
+  ! shift/reduce conflict for MENOR resolved as shift
+  ! shift/reduce conflict for IGUAL resolved as shift
+  ! shift/reduce conflict for DIFERENTE resolved as shift
     DOT             reduce using rule 35 (expression -> expression TIMES expression .)
     RPAREN          reduce using rule 35 (expression -> expression TIMES expression .)
     COMMA           reduce using rule 35 (expression -> expression TIMES expression .)
+    PLUS            shift and go to state 45
+    MINUS           shift and go to state 46
+    TIMES           shift and go to state 47
+    DIVIDE          shift and go to state 48
+    MAIOR           shift and go to state 49
+    MENOR           shift and go to state 50
+    IGUAL           shift and go to state 51
+    DIFERENTE       shift and go to state 52
 
-  ! PLUS            [ shift and go to state 45 ]
-  ! MINUS           [ shift and go to state 46 ]
-  ! TIMES           [ shift and go to state 47 ]
-  ! DIVIDE          [ shift and go to state 48 ]
-  ! MAIOR           [ shift and go to state 49 ]
-  ! MENOR           [ shift and go to state 50 ]
-  ! IGUAL           [ shift and go to state 51 ]
-  ! DIFERENTE       [ shift and go to state 52 ]
+  ! PLUS            [ reduce using rule 35 (expression -> expression TIMES expression .) ]
+  ! MINUS           [ reduce using rule 35 (expression -> expression TIMES expression .) ]
+  ! TIMES           [ reduce using rule 35 (expression -> expression TIMES expression .) ]
+  ! DIVIDE          [ reduce using rule 35 (expression -> expression TIMES expression .) ]
+  ! MAIOR           [ reduce using rule 35 (expression -> expression TIMES expression .) ]
+  ! MENOR           [ reduce using rule 35 (expression -> expression TIMES expression .) ]
+  ! IGUAL           [ reduce using rule 35 (expression -> expression TIMES expression .) ]
+  ! DIFERENTE       [ reduce using rule 35 (expression -> expression TIMES expression .) ]
 
 
 state 66
@@ -1422,26 +1454,34 @@ state 66
     (39) expression -> expression . IGUAL expression
     (40) expression -> expression . DIFERENTE expression
 
-    PLUS            reduce using rule 36 (expression -> expression DIVIDE expression .)
-    MINUS           reduce using rule 36 (expression -> expression DIVIDE expression .)
-    TIMES           reduce using rule 36 (expression -> expression DIVIDE expression .)
-    DIVIDE          reduce using rule 36 (expression -> expression DIVIDE expression .)
-    MAIOR           reduce using rule 36 (expression -> expression DIVIDE expression .)
-    MENOR           reduce using rule 36 (expression -> expression DIVIDE expression .)
-    IGUAL           reduce using rule 36 (expression -> expression DIVIDE expression .)
-    DIFERENTE       reduce using rule 36 (expression -> expression DIVIDE expression .)
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for MAIOR resolved as shift
+  ! shift/reduce conflict for MENOR resolved as shift
+  ! shift/reduce conflict for IGUAL resolved as shift
+  ! shift/reduce conflict for DIFERENTE resolved as shift
     DOT             reduce using rule 36 (expression -> expression DIVIDE expression .)
     RPAREN          reduce using rule 36 (expression -> expression DIVIDE expression .)
     COMMA           reduce using rule 36 (expression -> expression DIVIDE expression .)
+    PLUS            shift and go to state 45
+    MINUS           shift and go to state 46
+    TIMES           shift and go to state 47
+    DIVIDE          shift and go to state 48
+    MAIOR           shift and go to state 49
+    MENOR           shift and go to state 50
+    IGUAL           shift and go to state 51
+    DIFERENTE       shift and go to state 52
 
-  ! PLUS            [ shift and go to state 45 ]
-  ! MINUS           [ shift and go to state 46 ]
-  ! TIMES           [ shift and go to state 47 ]
-  ! DIVIDE          [ shift and go to state 48 ]
-  ! MAIOR           [ shift and go to state 49 ]
-  ! MENOR           [ shift and go to state 50 ]
-  ! IGUAL           [ shift and go to state 51 ]
-  ! DIFERENTE       [ shift and go to state 52 ]
+  ! PLUS            [ reduce using rule 36 (expression -> expression DIVIDE expression .) ]
+  ! MINUS           [ reduce using rule 36 (expression -> expression DIVIDE expression .) ]
+  ! TIMES           [ reduce using rule 36 (expression -> expression DIVIDE expression .) ]
+  ! DIVIDE          [ reduce using rule 36 (expression -> expression DIVIDE expression .) ]
+  ! MAIOR           [ reduce using rule 36 (expression -> expression DIVIDE expression .) ]
+  ! MENOR           [ reduce using rule 36 (expression -> expression DIVIDE expression .) ]
+  ! IGUAL           [ reduce using rule 36 (expression -> expression DIVIDE expression .) ]
+  ! DIFERENTE       [ reduce using rule 36 (expression -> expression DIVIDE expression .) ]
 
 
 state 67
@@ -1456,10 +1496,14 @@ state 67
     (39) expression -> expression . IGUAL expression
     (40) expression -> expression . DIFERENTE expression
 
-    MAIOR           reduce using rule 37 (expression -> expression MAIOR expression .)
-    MENOR           reduce using rule 37 (expression -> expression MAIOR expression .)
-    IGUAL           reduce using rule 37 (expression -> expression MAIOR expression .)
-    DIFERENTE       reduce using rule 37 (expression -> expression MAIOR expression .)
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for MAIOR resolved as shift
+  ! shift/reduce conflict for MENOR resolved as shift
+  ! shift/reduce conflict for IGUAL resolved as shift
+  ! shift/reduce conflict for DIFERENTE resolved as shift
     DOT             reduce using rule 37 (expression -> expression MAIOR expression .)
     RPAREN          reduce using rule 37 (expression -> expression MAIOR expression .)
     COMMA           reduce using rule 37 (expression -> expression MAIOR expression .)
@@ -1467,15 +1511,19 @@ state 67
     MINUS           shift and go to state 46
     TIMES           shift and go to state 47
     DIVIDE          shift and go to state 48
+    MAIOR           shift and go to state 49
+    MENOR           shift and go to state 50
+    IGUAL           shift and go to state 51
+    DIFERENTE       shift and go to state 52
 
   ! PLUS            [ reduce using rule 37 (expression -> expression MAIOR expression .) ]
   ! MINUS           [ reduce using rule 37 (expression -> expression MAIOR expression .) ]
   ! TIMES           [ reduce using rule 37 (expression -> expression MAIOR expression .) ]
   ! DIVIDE          [ reduce using rule 37 (expression -> expression MAIOR expression .) ]
-  ! MAIOR           [ shift and go to state 49 ]
-  ! MENOR           [ shift and go to state 50 ]
-  ! IGUAL           [ shift and go to state 51 ]
-  ! DIFERENTE       [ shift and go to state 52 ]
+  ! MAIOR           [ reduce using rule 37 (expression -> expression MAIOR expression .) ]
+  ! MENOR           [ reduce using rule 37 (expression -> expression MAIOR expression .) ]
+  ! IGUAL           [ reduce using rule 37 (expression -> expression MAIOR expression .) ]
+  ! DIFERENTE       [ reduce using rule 37 (expression -> expression MAIOR expression .) ]
 
 
 state 68
@@ -1490,10 +1538,14 @@ state 68
     (39) expression -> expression . IGUAL expression
     (40) expression -> expression . DIFERENTE expression
 
-    MAIOR           reduce using rule 38 (expression -> expression MENOR expression .)
-    MENOR           reduce using rule 38 (expression -> expression MENOR expression .)
-    IGUAL           reduce using rule 38 (expression -> expression MENOR expression .)
-    DIFERENTE       reduce using rule 38 (expression -> expression MENOR expression .)
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for MAIOR resolved as shift
+  ! shift/reduce conflict for MENOR resolved as shift
+  ! shift/reduce conflict for IGUAL resolved as shift
+  ! shift/reduce conflict for DIFERENTE resolved as shift
     DOT             reduce using rule 38 (expression -> expression MENOR expression .)
     RPAREN          reduce using rule 38 (expression -> expression MENOR expression .)
     COMMA           reduce using rule 38 (expression -> expression MENOR expression .)
@@ -1501,15 +1553,19 @@ state 68
     MINUS           shift and go to state 46
     TIMES           shift and go to state 47
     DIVIDE          shift and go to state 48
+    MAIOR           shift and go to state 49
+    MENOR           shift and go to state 50
+    IGUAL           shift and go to state 51
+    DIFERENTE       shift and go to state 52
 
   ! PLUS            [ reduce using rule 38 (expression -> expression MENOR expression .) ]
   ! MINUS           [ reduce using rule 38 (expression -> expression MENOR expression .) ]
   ! TIMES           [ reduce using rule 38 (expression -> expression MENOR expression .) ]
   ! DIVIDE          [ reduce using rule 38 (expression -> expression MENOR expression .) ]
-  ! MAIOR           [ shift and go to state 49 ]
-  ! MENOR           [ shift and go to state 50 ]
-  ! IGUAL           [ shift and go to state 51 ]
-  ! DIFERENTE       [ shift and go to state 52 ]
+  ! MAIOR           [ reduce using rule 38 (expression -> expression MENOR expression .) ]
+  ! MENOR           [ reduce using rule 38 (expression -> expression MENOR expression .) ]
+  ! IGUAL           [ reduce using rule 38 (expression -> expression MENOR expression .) ]
+  ! DIFERENTE       [ reduce using rule 38 (expression -> expression MENOR expression .) ]
 
 
 state 69
@@ -1524,8 +1580,14 @@ state 69
     (39) expression -> expression . IGUAL expression
     (40) expression -> expression . DIFERENTE expression
 
-    IGUAL           reduce using rule 39 (expression -> expression IGUAL expression .)
-    DIFERENTE       reduce using rule 39 (expression -> expression IGUAL expression .)
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for MAIOR resolved as shift
+  ! shift/reduce conflict for MENOR resolved as shift
+  ! shift/reduce conflict for IGUAL resolved as shift
+  ! shift/reduce conflict for DIFERENTE resolved as shift
     DOT             reduce using rule 39 (expression -> expression IGUAL expression .)
     RPAREN          reduce using rule 39 (expression -> expression IGUAL expression .)
     COMMA           reduce using rule 39 (expression -> expression IGUAL expression .)
@@ -1535,6 +1597,8 @@ state 69
     DIVIDE          shift and go to state 48
     MAIOR           shift and go to state 49
     MENOR           shift and go to state 50
+    IGUAL           shift and go to state 51
+    DIFERENTE       shift and go to state 52
 
   ! PLUS            [ reduce using rule 39 (expression -> expression IGUAL expression .) ]
   ! MINUS           [ reduce using rule 39 (expression -> expression IGUAL expression .) ]
@@ -1542,8 +1606,8 @@ state 69
   ! DIVIDE          [ reduce using rule 39 (expression -> expression IGUAL expression .) ]
   ! MAIOR           [ reduce using rule 39 (expression -> expression IGUAL expression .) ]
   ! MENOR           [ reduce using rule 39 (expression -> expression IGUAL expression .) ]
-  ! IGUAL           [ shift and go to state 51 ]
-  ! DIFERENTE       [ shift and go to state 52 ]
+  ! IGUAL           [ reduce using rule 39 (expression -> expression IGUAL expression .) ]
+  ! DIFERENTE       [ reduce using rule 39 (expression -> expression IGUAL expression .) ]
 
 
 state 70
@@ -1558,8 +1622,14 @@ state 70
     (39) expression -> expression . IGUAL expression
     (40) expression -> expression . DIFERENTE expression
 
-    IGUAL           reduce using rule 40 (expression -> expression DIFERENTE expression .)
-    DIFERENTE       reduce using rule 40 (expression -> expression DIFERENTE expression .)
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for MAIOR resolved as shift
+  ! shift/reduce conflict for MENOR resolved as shift
+  ! shift/reduce conflict for IGUAL resolved as shift
+  ! shift/reduce conflict for DIFERENTE resolved as shift
     DOT             reduce using rule 40 (expression -> expression DIFERENTE expression .)
     RPAREN          reduce using rule 40 (expression -> expression DIFERENTE expression .)
     COMMA           reduce using rule 40 (expression -> expression DIFERENTE expression .)
@@ -1569,6 +1639,8 @@ state 70
     DIVIDE          shift and go to state 48
     MAIOR           shift and go to state 49
     MENOR           shift and go to state 50
+    IGUAL           shift and go to state 51
+    DIFERENTE       shift and go to state 52
 
   ! PLUS            [ reduce using rule 40 (expression -> expression DIFERENTE expression .) ]
   ! MINUS           [ reduce using rule 40 (expression -> expression DIFERENTE expression .) ]
@@ -1576,8 +1648,8 @@ state 70
   ! DIVIDE          [ reduce using rule 40 (expression -> expression DIFERENTE expression .) ]
   ! MAIOR           [ reduce using rule 40 (expression -> expression DIFERENTE expression .) ]
   ! MENOR           [ reduce using rule 40 (expression -> expression DIFERENTE expression .) ]
-  ! IGUAL           [ shift and go to state 51 ]
-  ! DIFERENTE       [ shift and go to state 52 ]
+  ! IGUAL           [ reduce using rule 40 (expression -> expression DIFERENTE expression .) ]
+  ! DIFERENTE       [ reduce using rule 40 (expression -> expression DIFERENTE expression .) ]
 
 
 state 71
@@ -1608,6 +1680,14 @@ state 73
     (39) expression -> expression . IGUAL expression
     (40) expression -> expression . DIFERENTE expression
 
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for MAIOR resolved as shift
+  ! shift/reduce conflict for MENOR resolved as shift
+  ! shift/reduce conflict for IGUAL resolved as shift
+  ! shift/reduce conflict for DIFERENTE resolved as shift
     DOT             reduce using rule 32 (expression -> lvalue EQUALS expression .)
     RPAREN          reduce using rule 32 (expression -> lvalue EQUALS expression .)
     COMMA           reduce using rule 32 (expression -> lvalue EQUALS expression .)
@@ -1921,3 +2001,83 @@ WARNING: Conflicts:
 WARNING: 
 WARNING: shift/reduce conflict for INTEIRO in state 0 resolved as shift
 WARNING: shift/reduce conflict for INICIO in state 0 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 56 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 56 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 56 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 56 resolved as shift
+WARNING: shift/reduce conflict for MAIOR in state 56 resolved as shift
+WARNING: shift/reduce conflict for MENOR in state 56 resolved as shift
+WARNING: shift/reduce conflict for IGUAL in state 56 resolved as shift
+WARNING: shift/reduce conflict for DIFERENTE in state 56 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 63 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 63 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 63 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 63 resolved as shift
+WARNING: shift/reduce conflict for MAIOR in state 63 resolved as shift
+WARNING: shift/reduce conflict for MENOR in state 63 resolved as shift
+WARNING: shift/reduce conflict for IGUAL in state 63 resolved as shift
+WARNING: shift/reduce conflict for DIFERENTE in state 63 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 64 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 64 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 64 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 64 resolved as shift
+WARNING: shift/reduce conflict for MAIOR in state 64 resolved as shift
+WARNING: shift/reduce conflict for MENOR in state 64 resolved as shift
+WARNING: shift/reduce conflict for IGUAL in state 64 resolved as shift
+WARNING: shift/reduce conflict for DIFERENTE in state 64 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 65 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 65 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 65 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 65 resolved as shift
+WARNING: shift/reduce conflict for MAIOR in state 65 resolved as shift
+WARNING: shift/reduce conflict for MENOR in state 65 resolved as shift
+WARNING: shift/reduce conflict for IGUAL in state 65 resolved as shift
+WARNING: shift/reduce conflict for DIFERENTE in state 65 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 66 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 66 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 66 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 66 resolved as shift
+WARNING: shift/reduce conflict for MAIOR in state 66 resolved as shift
+WARNING: shift/reduce conflict for MENOR in state 66 resolved as shift
+WARNING: shift/reduce conflict for IGUAL in state 66 resolved as shift
+WARNING: shift/reduce conflict for DIFERENTE in state 66 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 67 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 67 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 67 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 67 resolved as shift
+WARNING: shift/reduce conflict for MAIOR in state 67 resolved as shift
+WARNING: shift/reduce conflict for MENOR in state 67 resolved as shift
+WARNING: shift/reduce conflict for IGUAL in state 67 resolved as shift
+WARNING: shift/reduce conflict for DIFERENTE in state 67 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 68 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 68 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 68 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 68 resolved as shift
+WARNING: shift/reduce conflict for MAIOR in state 68 resolved as shift
+WARNING: shift/reduce conflict for MENOR in state 68 resolved as shift
+WARNING: shift/reduce conflict for IGUAL in state 68 resolved as shift
+WARNING: shift/reduce conflict for DIFERENTE in state 68 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 69 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 69 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 69 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 69 resolved as shift
+WARNING: shift/reduce conflict for MAIOR in state 69 resolved as shift
+WARNING: shift/reduce conflict for MENOR in state 69 resolved as shift
+WARNING: shift/reduce conflict for IGUAL in state 69 resolved as shift
+WARNING: shift/reduce conflict for DIFERENTE in state 69 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 70 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 70 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 70 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 70 resolved as shift
+WARNING: shift/reduce conflict for MAIOR in state 70 resolved as shift
+WARNING: shift/reduce conflict for MENOR in state 70 resolved as shift
+WARNING: shift/reduce conflict for IGUAL in state 70 resolved as shift
+WARNING: shift/reduce conflict for DIFERENTE in state 70 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 73 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 73 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 73 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 73 resolved as shift
+WARNING: shift/reduce conflict for MAIOR in state 73 resolved as shift
+WARNING: shift/reduce conflict for MENOR in state 73 resolved as shift
+WARNING: shift/reduce conflict for IGUAL in state 73 resolved as shift
+WARNING: shift/reduce conflict for DIFERENTE in state 73 resolved as shift

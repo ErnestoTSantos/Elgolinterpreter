@@ -1,5 +1,4 @@
 import ply.yacc as yacc
-import ply.lex as lex
 
 from lexical_interpreter import ElgolLexer
 
@@ -17,15 +16,6 @@ class ElgolParser:
         parser (yacc.LRParser): The PLY parser instance.
         syntax_error_count (int): Counter for syntax errors encountered during parsing.
     """
-
-    precedence = (
-        ("right", "EQUALS"),
-        ("left", "IGUAL", "DIFERENTE"),
-        ("left", "MAIOR", "MENOR"),
-        ("left", "PLUS", "MINUS"),
-        ("left", "TIMES", "DIVIDE"),
-        ("right", "P_UNARY_COMP"),
-    )
 
     start = "program"
 
@@ -210,17 +200,17 @@ class ElgolParser:
     def p_expression_assign(self, p):
         """expression : lvalue EQUALS expression"""
         lvalue_node = p[1]
-        lvalue_name = lvalue_node[1] 
+        lvalue_name = lvalue_node[1]
         rhs_expression_node = p[3]
 
-        if rhs_expression_node is None: 
+        if rhs_expression_node is None:
             p[0] = None
             return
 
         if lvalue_name == "elgio":
             offending_func_call_details = self._find_first_function_call_in_expr(rhs_expression_node)
             if offending_func_call_details:
-                func_name_in_expr = offending_func_call_details[1] 
+                func_name_in_expr = offending_func_call_details[1]
                 error_line = p.lineno(1)
 
                 print(
@@ -249,6 +239,8 @@ class ElgolParser:
             p[0] = (p[2], p[1], p[3])
 
     def p_expression_comp_unary(self, p):
+        """expression : COMP expression"""
+        p[0] = ("unary_operator_comp", p[2])
         """expression : COMP expression %prec P_UNARY_COMP"""
         if p[2] is None:
             p[0] = None
@@ -311,7 +303,7 @@ class ElgolParser:
         missing an operand.
         """
         if p:
-            
+
             coluna_str = ""
             try:
                 if hasattr(p, 'lexer') and p.lexer and hasattr(p.lexer, 'lexdata') and \
@@ -331,7 +323,7 @@ class ElgolParser:
                     print(
                         f"    Additional Info: operator '{last.value}' on line {last.lineno} might be missing a valid right-hand operand."
                     )
-         
+
         else:
             print("Syntax error: unexpected end of file")
 
