@@ -2,6 +2,7 @@ import ply.yacc as yacc
 
 from lexical_interpreter import ElgolLexer
 
+
 class ElgolParser:
     """
     A parser for the Elgol programming language using PLY (Python Lex-Yacc).
@@ -38,17 +39,21 @@ class ElgolParser:
         Returns:
             tuple or None: The 'function_call' AST node if found, otherwise None.
         """
-        if not isinstance(node, (tuple, list)) or not node: return None
+        if not isinstance(node, (tuple, list)) or not node:
+            return None
         if isinstance(node, list):
             for item_in_list in node:
                 found = self._find_first_function_call_in_expr(item_in_list)
-                if found: return found
+                if found:
+                    return found
             return None
         node_type = node[0]
-        if node_type == "function_call": return node
+        if node_type == "function_call":
+            return node
         for part in node[1:]:
             found = self._find_first_function_call_in_expr(part)
-            if found: return found
+            if found:
+                return found
         return None
 
     def p_program(self, p):
@@ -57,10 +62,10 @@ class ElgolParser:
 
     def p_component_list(self, p):
         """component_list : component_list component
-                          | component
-                          | empty"""
+        | component
+        | empty"""
         if len(p) == 2:
-            if p.slice[1].type == 'empty':
+            if p.slice[1].type == "empty":
                 p[0] = []
             else:
                 if p[1] is None:
@@ -75,7 +80,7 @@ class ElgolParser:
 
     def p_component(self, p):
         """component : function_definition
-                     | main_block"""
+        | main_block"""
         p[0] = p[1]
 
     def p_function_definition(self, p):
@@ -90,21 +95,25 @@ class ElgolParser:
 
     def p_parameters_opt(self, p):
         """parameters_opt : parameter_list
-                          | empty"""
-        if p.slice[1].type == 'empty':
+        | empty"""
+        if p.slice[1].type == "empty":
             p[0] = []
         else:
             p[0] = p[1]
 
     def p_parameter_list(self, p):
         """parameter_list : parameter_list COMMA parameter
-                           | parameter"""
+        | parameter"""
         if len(p) == 2:
-            if p[1] is None: p[0] = None
-            else: p[0] = [p[1]]
+            if p[1] is None:
+                p[0] = None
+            else:
+                p[0] = [p[1]]
         else:
-            if p[1] is None or p[3] is None: p[0] = None
-            else: p[0] = p[1] + [p[3]]
+            if p[1] is None or p[3] is None:
+                p[0] = None
+            else:
+                p[0] = p[1] + [p[3]]
 
     def p_parameter(self, p):
         """parameter : type_specifier IDENTIFIER"""
@@ -127,15 +136,15 @@ class ElgolParser:
 
     def p_statement_list_opt(self, p):
         """statement_list_opt : statement_list
-                              | empty"""
-        if p.slice[1].type == 'empty':
+        | empty"""
+        if p.slice[1].type == "empty":
             p[0] = []
         else:
             p[0] = p[1]
 
     def p_statement_list(self, p):
         """statement_list : statement_list statement
-                          | statement"""
+        | statement"""
         if len(p) == 2:
             if p[1] is None:
                 p[0] = None
@@ -153,9 +162,9 @@ class ElgolParser:
 
     def p_statement(self, p):
         """statement : variable_declaration DOT
-                     | expression_statement DOT
-                     | if_statement
-                     | while_statement"""
+        | expression_statement DOT
+        | if_statement
+        | while_statement"""
         if p[1] is None:
             p[0] = None
         else:
@@ -167,7 +176,9 @@ class ElgolParser:
 
     def p_if_statement(self, p):
         """if_statement : SE expression DOT ENTAO DOT block senao_opt"""
-        is_else_present_and_failed = (len(p.slice) > 7 and p.slice[7].type != 'empty' and p[7] is None)
+        is_else_present_and_failed = (
+            len(p.slice) > 7 and p.slice[7].type != "empty" and p[7] is None
+        )
 
         if p[2] is None or p[6] is None or is_else_present_and_failed:
             p[0] = None
@@ -179,7 +190,7 @@ class ElgolParser:
 
     def p_senao_opt(self, p):
         """senao_opt : SENAO DOT block
-                     | empty"""
+        | empty"""
         if len(p) == 4:
             p[0] = p[3]
         else:
@@ -194,7 +205,7 @@ class ElgolParser:
 
     def p_lvalue(self, p):
         """lvalue : IDENTIFIER
-                  | ELGIO"""
+        | ELGIO"""
         p[0] = ("lvalue", p[1])
 
     def p_expression_assign(self, p):
@@ -208,7 +219,9 @@ class ElgolParser:
             return
 
         if lvalue_name == "elgio":
-            offending_func_call_details = self._find_first_function_call_in_expr(rhs_expression_node)
+            offending_func_call_details = self._find_first_function_call_in_expr(
+                rhs_expression_node
+            )
             if offending_func_call_details:
                 func_name_in_expr = offending_func_call_details[1]
                 error_line = p.lineno(1)
@@ -217,22 +230,21 @@ class ElgolParser:
                     f"Syntax Error: Line {error_line}. Reason: Function '{func_name_in_expr}' cannot be used as an operand in an assignment to 'elgio'."
                 )
 
-                self.syntax_error_count +=1
+                self.syntax_error_count += 1
                 p[0] = None
                 return
 
         p[0] = ("assign", lvalue_name, rhs_expression_node)
 
-
     def p_expression_binop(self, p):
         """expression : expression PLUS expression
-                      | expression MINUS expression
-                      | expression TIMES expression
-                      | expression DIVIDE expression
-                      | expression MAIOR expression
-                      | expression MENOR expression
-                      | expression IGUAL expression
-                      | expression DIFERENTE expression"""
+        | expression MINUS expression
+        | expression TIMES expression
+        | expression DIVIDE expression
+        | expression MAIOR expression
+        | expression MENOR expression
+        | expression IGUAL expression
+        | expression DIFERENTE expression"""
         if p[1] is None or p[3] is None:
             p[0] = None
         else:
@@ -240,8 +252,6 @@ class ElgolParser:
 
     def p_expression_comp_unary(self, p):
         """expression : COMP expression"""
-        p[0] = ("unary_operator_comp", p[2])
-        """expression : COMP expression %prec P_UNARY_COMP"""
         if p[2] is None:
             p[0] = None
         else:
@@ -261,32 +271,34 @@ class ElgolParser:
 
     def p_expression_identifier_like(self, p):
         """expression : IDENTIFIER
-                      | ELGIO"""
+        | ELGIO"""
         p[0] = ("identifier_lookup", p[1])
 
     def p_expression_function_call(self, p):
         """expression : FUNCTION_NAME LPAREN argument_list_opt RPAREN"""
         p[0] = ("function_call", p[1], p[3])
 
-
     def p_argument_list_opt(self, p):
         """argument_list_opt : argument_list
-                             | empty"""
-        if p.slice[1].type == 'empty':
+        | empty"""
+        if p.slice[1].type == "empty":
             p[0] = []
         else:
             p[0] = p[1]
 
     def p_argument_list(self, p):
         """argument_list : argument_list COMMA expression
-                         | expression"""
+        | expression"""
         if len(p) == 2:
-            if p[1] is None: p[0] = None
-            else: p[0] = [p[1]]
+            if p[1] is None:
+                p[0] = None
+            else:
+                p[0] = [p[1]]
         else:
             if p[1] is None or p[3] is None:
                 p[0] = None
-            else: p[0] = p[1] + [p[3]]
+            else:
+                p[0] = p[1] + [p[3]]
 
     def p_empty(self, p):
         """empty :"""
@@ -306,8 +318,13 @@ class ElgolParser:
 
             coluna_str = ""
             try:
-                if hasattr(p, 'lexer') and p.lexer and hasattr(p.lexer, 'lexdata') and \
-                   hasattr(self.lexer_instance, '_find_column') and callable(self.lexer_instance._find_column):
+                if (
+                    hasattr(p, "lexer")
+                    and p.lexer
+                    and hasattr(p.lexer, "lexdata")
+                    and hasattr(self.lexer_instance, "_find_column")
+                    and callable(self.lexer_instance._find_column)
+                ):
                     coluna = self.lexer_instance._find_column(p.lexer.lexdata, p)
                     coluna_str = f", Column {coluna}"
             except Exception:
@@ -317,16 +334,19 @@ class ElgolParser:
                 f"Syntax error on line {p.lineno}{coluna_str}: unexpected symbol '{p.value}'"
             )
 
-            if hasattr(p, 'lexer') and p.lexer and hasattr(p.lexer, "last_token"):
+            if hasattr(p, "lexer") and p.lexer and hasattr(p.lexer, "last_token"):
                 last = p.lexer.last_token
-                if last and hasattr(last, 'type') and last.type in ("PLUS", "MINUS", "TIMES", "DIVIDE"):
+                if (
+                    last
+                    and hasattr(last, "type")
+                    and last.type in ("PLUS", "MINUS", "TIMES", "DIVIDE")
+                ):
                     print(
                         f"    Additional Info: operator '{last.value}' on line {last.lineno} might be missing a valid right-hand operand."
                     )
 
         else:
             print("Syntax error: unexpected end of file")
-
 
     def parse(self, data: str):
         """
@@ -340,5 +360,5 @@ class ElgolParser:
             at the top level or if syntax errors prevent AST construction.
         """
         self.syntax_error_count = 0
-        self.lexer_instance.input(data) # Ensure lexer is reset with new data
+        self.lexer_instance.input(data)  # Ensure lexer is reset with new data
         return self.parser.parse(data, lexer=self.lexer_instance.lexer, tracking=True)
