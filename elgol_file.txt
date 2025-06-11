@@ -1,27 +1,34 @@
-# erros sintáticos
-inteiro _Fazalgo(inteiro Fazum, inteiro). # falta id depois do inteiro
-inicio   						# faltou .
+inteiro _Fazalgo (inteiro Fazum, inteiro Fazdois).
+inicio.
    inteiro Lixo.
+   inteiro Lixox.
 
-   Lixo = Fazum - Fazdois + zero x. # operador x precisa de 2 operandos
-   elgio = Lixo + _Soma(20,30).     # elgio não permite ter função
+   Lixo = Fazum x Fazdois + zero.
+   Fazum = Lixox - Fazdois + 34 - zero x 15 / 3 x 4 - 87 + Fazum.
+   elgio = Fazum.
 fim.
 
 inicio.
-  inteiro Variavel, Lixo.   # Não pode ter , aqui
+  inteiro Variavel.
   inteiro Teste.
+  inteiro Varx.
 
   Variavel = zero.
+  Variaval = Teste + Nada .
+  Teste = 45 x _Fazalgo (45, Variavel).
 
-  Teste = 45 x _Fazalgo (50, Variavel).
+  Varx = _Fazalgo (Teste, zero).   # Comentario aqui
 
-  se Teste maior zero.
+  se Varx maior Variavel.
   entao.
   inicio.
-    Variavel = Teste igual Lixo. # Somente exp mat podem ser atribuídas
+      Varx = Varx x _Fazalgo(Variavel, zero).
+      Teste = 45.
   fim.
-  # erro semântico (não implementar). Faltou senao
+  senao.
+  inicio.
+      Varx = zero.
+  fim.
 
-  Variavel = Variavel + Nova + 3 - 5 x 2 / 2 + Teste.
-  # semântico: Nova não foi declarada
+  Variavel = Variavel + 3 - 5 x 2 / 2 + Teste.
 fim.
